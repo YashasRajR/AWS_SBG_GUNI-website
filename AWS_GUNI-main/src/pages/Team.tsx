@@ -224,6 +224,15 @@ export const Team: React.FC = () => {
     linkedin: "https://linkedin.com/in/pravesh-patel-43573a10"
   };
 
+  const coordinator2 = {
+    name: "Dr. Kiran Amin",
+    designation: "Faculty Coordinator",
+    role: "SBG Coordinator",
+    tagline: "Academic Leadership & Excellence",
+    profileImage: "/gallery/KiranAmin.png",
+    linkedin: "#"
+  };
+
   const leader = {
     name: "Harshil Maniyar",
     designation: "AWS SBG Leader",
@@ -261,7 +270,7 @@ export const Team: React.FC = () => {
               <span className="w-2 h-10 rounded-full bg-[#a855f7] text-glow shrink-0" />
             </h2>
           </div>
-          <div className="flex-1 flex justify-center md:justify-start md:pl-8 w-full">
+          <div className="flex-1 flex flex-col sm:flex-row justify-center md:justify-start md:pl-8 w-full gap-6">
             <TeamCard
               member={{
                 name: coordinator.name,
@@ -271,6 +280,17 @@ export const Team: React.FC = () => {
                 description: coordinator.tagline,
                 profileImage: coordinator.profileImage,
                 linkedin: coordinator.linkedin
+              }}
+            />
+            <TeamCard
+              member={{
+                name: coordinator2.name,
+                designation: coordinator2.designation,
+                role: coordinator2.role,
+                tagline: coordinator2.tagline,
+                description: coordinator2.tagline,
+                profileImage: coordinator2.profileImage,
+                linkedin: coordinator2.linkedin
               }}
             />
           </div>
