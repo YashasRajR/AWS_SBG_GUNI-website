@@ -146,28 +146,7 @@ const GalleryCard: React.FC<GalleryCardProps> = ({
         {/* Overlay gradient */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-85 pointer-events-none" />
 
-        {/* Subtle details overlay inside the active card itself */}
-        <AnimatePresence>
-          {isActive && (
-            <motion.div
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 8 }}
-              transition={{ duration: 0.3 }}
-              className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-slate-950 via-slate-950/80 to-transparent"
-            >
-              <span className="text-[7.5px] font-mono text-[#a855f7] uppercase tracking-wider block">
-                {item.category}
-              </span>
-              <h4 className="text-[10px] font-bold text-white truncate mt-0.5 leading-tight">
-                {item.title}
-              </h4>
-              <p className="text-[7.5px] text-slate-400 mt-0.5 font-mono">
-                {item.date}
-              </p>
-            </motion.div>
-          )}
-        </AnimatePresence>
+        {/* Subtle details overlay removed per user request */}
 
         {/* Hover zoom icon */}
         {isActive && (
@@ -360,14 +339,7 @@ export const Gallery: React.FC = () => {
                       loading="lazy"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80" />
-                    <div className="absolute bottom-0 left-0 p-3 w-full">
-                      <span className="text-[9px] font-mono text-[#a855f7] uppercase tracking-wider block">
-                        {item.category}
-                      </span>
-                      <h4 className="text-xs font-bold text-white truncate mt-0.5 shadow-sm">
-                        {item.title}
-                      </h4>
-                    </div>
+                    {/* Text overlay removed per user request */}
                   </motion.div>
                 );
               })}
