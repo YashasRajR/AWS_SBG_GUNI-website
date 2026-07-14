@@ -55,8 +55,7 @@ export function StatsCard({
   const containerRef = useRef<HTMLAnchorElement>(null);
   const isInView = useInView(containerRef, { once: true, margin: '-50px' });
   const [count, setCount] = useState(0);
-  const rawTargetCount = parseInt(memberCount.toString().replace(/[^0-9]/g, ''), 10) || 1174;
-  const targetCount = rawTargetCount >= 100 ? Math.floor(rawTargetCount / 100) * 100 : rawTargetCount;
+  const targetCount = parseInt(memberCount.toString().replace(/[^0-9]/g, ''), 10) || 1174;
   
   useEffect(() => {
     if (isInView) {
@@ -126,7 +125,6 @@ export function StatsCard({
             >
               {count}
             </motion.div>
-            <span className={`text-4xl sm:text-5xl font-extrabold pb-1 ${theme.textPlus}`}>+</span>
           </div>
           
           <div className="text-xs uppercase tracking-widest text-slate-400 font-sans font-medium mt-1">
