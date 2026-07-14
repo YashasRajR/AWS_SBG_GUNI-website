@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 
 // Layout and Common UI Components
 import { Navbar } from './components/layout/Navbar';
 import { Footer } from './components/layout/Footer';
-import { PixelLoader } from './components/ui/PixelLoader';
 import { SonarClickEffect } from './components/ui/SonarClickEffect';
 
 // Pages
@@ -77,28 +76,20 @@ const AppContent: React.FC = () => {
 };
 
 export const App: React.FC = () => {
-  const [loading, setLoading] = useState(true);
-
   return (
     <BrowserRouter>
       {/* Scroll restoration on path updates */}
       <ScrollToTop />
       
-      <AnimatePresence mode="wait">
-        {loading ? (
-          <PixelLoader key="loader" onComplete={() => setLoading(false)} />
-        ) : (
-          <motion.div
-            key="content"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }} // easeOutExpo
-            className="min-h-screen"
-          >
-            <AppContent />
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <motion.div
+        key="content"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }} // easeOutExpo
+        className="min-h-screen"
+      >
+        <AppContent />
+      </motion.div>
     </BrowserRouter>
   );
 };
