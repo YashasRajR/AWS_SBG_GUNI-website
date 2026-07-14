@@ -1,0 +1,379 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Sora:wght@600;700;800&family=Poppins:wght@400;500;600;700;800;900&display=swap');
+
+@import "tailwindcss";
+
+:root {
+  /* ── 4-Font System ── */
+  --font-sans:    'Inter', system-ui, sans-serif;
+  --font-heading: 'Sora', sans-serif;
+  --font-mono:    'JetBrains Mono', 'Courier New', monospace;
+  --font-accent:  'Cormorant Garamond', serif;
+  --font-poppins: 'Poppins', sans-serif;
+
+  /* ── Scaled-down Type Scale ── */
+  --text-xs:   0.6875rem; /* 11px — tiny chips/tags */
+  --text-sm:   0.8125rem; /* 13px — captions, secondary */
+  --text-base: 0.9375rem; /* 15px — body default */
+  --text-lg:   1rem;      /* 16px — card body */
+  --text-xl:   1.125rem;  /* 18px — sub-headings */
+  --text-2xl:  1.25rem;   /* 20px — card titles */
+  --text-3xl:  1.5rem;    /* 24px — section titles */
+  --text-4xl:  1.875rem;  /* 30px — page headings */
+  --text-5xl:  2.5rem;    /* 40px — hero headings */
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #030303;
+  color: #e2e8f0;
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  font-weight: 400;
+  line-height: 1.65;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: #a855f7 #030303;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Global typography utilities ── */
+.font-heading  { font-family: var(--font-heading) !important; }
+.font-sans     { font-family: var(--font-sans)    !important; }
+.font-mono     { font-family: var(--font-mono)    !important; }
+.font-accent   { font-family: var(--font-accent)  !important; }
+.font-poppins  { font-family: var(--font-poppins) !important; }
+
+/* Heading defaults — Sora only applies font-family; sizes stay Tailwind-controlled */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+  color: #f1f5f9;
+}
+
+/* Body text — Inter */
+p { font-family: var(--font-sans); line-height: 1.7; }
+
+/* Mono labels — JetBrains Mono */
+code, kbd, .mono-label {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  letter-spacing: 0.02em;
+}
+
+/* Contrast & Readability Enhancements for space-void theme */
+.text-slate-400 {
+  color: #e2e8f0 !important; /* Elevate description text to slate-200 for excellent contrast */
+}
+.text-slate-500 {
+  color: #94a3b8 !important; /* Elevate secondary labels to slate-400 */
+}
+.text-slate-600 {
+  color: #64748b !important; /* Elevate dark labels to slate-500 */
+}
+
+
+/* Custom scrollbar for Webkit */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #030303;
+}
+::-webkit-scrollbar-thumb {
+  background: #a855f7; /* Purple */
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #8227e3;
+}
+
+/* Glassmorphism bulkhead panel styles */
+.glass {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(10, 11, 20, 0.5) 30%, rgba(4, 5, 10, 0.8) 100%);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+}
+
+.glass-nav {
+  background: rgba(4, 4, 8, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(168, 85, 247, 0.2); /* Purple border indicator */
+}
+
+/* Astrophage Fuel Module Card styling */
+.glass-card-orange {
+  background: linear-gradient(135deg, rgba(255, 170, 0, 0.07) 0%, rgba(10, 11, 22, 0.65) 40%, rgba(4, 5, 10, 0.85) 100%);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 170, 0, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.45), inset 0 1px 1px rgba(255, 255, 255, 0.08);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.glass-card-orange:hover {
+  border-color: rgba(255, 170, 0, 0.7);
+  box-shadow: 0 0 25px rgba(255, 170, 0, 0.4);
+  transform: translateY(-4px);
+}
+
+/* Eridian Science Module Card styling */
+.glass-card-blue {
+  background: linear-gradient(135deg, rgba(6, 182, 212, 0.07) 0%, rgba(10, 11, 22, 0.65) 40%, rgba(4, 5, 10, 0.85) 100%);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(6, 182, 212, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.45), inset 0 1px 1px rgba(255, 255, 255, 0.08);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.glass-card-blue:hover {
+  border-color: rgba(6, 182, 212, 0.7);
+  box-shadow: 0 0 25px rgba(6, 182, 212, 0.4);
+  transform: translateY(-4px);
+}
+
+/* Constellation team card glow hover */
+.team-glow-card {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(10, 11, 22, 0.6) 40%, rgba(4, 5, 10, 0.8) 100%);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.45), inset 0 1px 1px rgba(255, 255, 255, 0.08);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.team-glow-card:hover {
+  border-color: rgba(6, 182, 212, 0.35); /* Eridian Teal hover border */
+  box-shadow: 0 12px 40px rgba(6, 182, 212, 0.25), 0 0 50px rgba(255, 170, 0, 0.1), inset 0 1px 2px rgba(255, 255, 255, 0.15); /* Teal + Astrophage Gold composite glow with reflection */
+  transform: translateY(-6px);
+}
+
+.team-glow-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: linear-gradient(135deg, rgba(255,170,0,0.1) 0%, rgba(255,170,0,0.6) 50%, rgba(6,182,212,0.6) 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+.team-glow-card:hover::before {
+  opacity: 1;
+}
+
+.text-glow {
+  text-shadow: 0 0 10px rgba(255, 170, 0, 0.45); /* Astrophage Gold glow */
+}
+
+.text-glow-blue {
+  text-shadow: 0 0 10px rgba(6, 182, 212, 0.45); /* Eridian Teal glow */
+}
+
+/* Custom transitions and utility animations */
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 0.55;
+  }
+}
+
+.pulse-glow-orange {
+  animation: pulseGlow 4s infinite ease-in-out;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Radar scan animation for console elements */
+@keyframes radarSweep {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+.radar-sweep-indicator {
+  position: relative;
+  overflow: hidden;
+}
+.radar-sweep-indicator::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(6, 182, 212, 0.65), transparent);
+  animation: radarSweep 3.5s infinite linear;
+  pointer-events: none;
+}
+
+/* Standard styling of input elements to match theme */
+input, textarea, select {
+  outline: none;
+}
+input:focus, textarea:focus, select:focus {
+  border-color: rgba(168, 85, 247, 0.6);
+  box-shadow: 0 0 15px rgba(168, 85, 247, 0.2);
+}
+
+/* -------------------------------------------------------------------------- */
+/*                        BANDIPUR ESTABLISHED ANIMATIONS                     */
+/* -------------------------------------------------------------------------- */
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-50% - 12px));
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 35s linear infinite;
+}
+
+.group\/marquee:hover .animate-marquee {
+  animation-play-state: paused;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                     ACCENT SHIFTS & COLOR CLASS OVERRIDES                  */
+/* -------------------------------------------------------------------------- */
+
+:root {
+  --color-primary: #a855f7;       /* Purple Brand */
+  --color-primary-hover: #9333ea;
+  --color-secondary: #d946ef;     /* Pink Brand Accent */
+  --color-accent: #00f5ff;        /* Cyan Highlight */
+}
+
+/* Override hardcoded yellow/gold community buttons */
+.bg-\[\#ffaa00\] {
+  background-color: var(--color-primary) !important;
+  color: #ffffff !important;
+}
+.bg-\[\#ffaa00\]:hover {
+  background-color: var(--color-primary-hover) !important;
+}
+.text-\[\#ffaa00\] {
+  color: var(--color-primary) !important;
+}
+.border-\[\#ffaa00\] {
+  border-color: var(--color-primary) !important;
+}
+.border-\[\#ffaa00\]\/20 {
+  border-color: rgba(168, 85, 247, 0.2) !important;
+}
+.shadow-\[\#ffaa00\]\/20 {
+  box-shadow: 0 10px 15px -3px rgba(168, 85, 247, 0.2) !important;
+}
+.shadow-\[\#ffaa00\]\/25 {
+  box-shadow: 0 10px 15px -3px rgba(168, 85, 247, 0.25) !important;
+}
+.shadow-\[\#ffaa00\]\/45 {
+  box-shadow: 0 10px 15px -3px rgba(168, 85, 247, 0.45) !important;
+}
+.bg-\[\#ffaa00\]\/10 {
+  background-color: rgba(168, 85, 247, 0.1) !important;
+}
+
+/* Override hardcoded cyan styling elements */
+.text-\[\#00f5ff\] {
+  color: var(--color-secondary) !important;
+}
+.bg-\[\#00f5ff\] {
+  background-color: var(--color-secondary) !important;
+}
+.bg-\[\#00f5ff\]\/5 {
+  background-color: rgba(168, 85, 247, 0.05) !important;
+}
+.bg-\[\#00f5ff\]\/10 {
+  background-color: rgba(217, 70, 239, 0.1) !important;
+}
+.bg-\[\#00f5ff\]\/20 {
+  background-color: rgba(217, 70, 239, 0.2) !important;
+}
+.border-\[\#00f5ff\]\/30 {
+  border-color: rgba(217, 70, 239, 0.3) !important;
+}
+.hover\:border-\[\#00f5ff\]:hover {
+  border-color: var(--color-secondary) !important;
+}
+.hover\:text-\[\#00f5ff\]:hover {
+  color: var(--color-secondary) !important;
+}
+.text-glow-blue {
+  text-shadow: 0 0 10px rgba(217, 70, 239, 0.5) !important;
+}
+.shadow-\[0_0_8px_\#00f5ff\] {
+  box-shadow: 0 0 8px var(--color-secondary) !important;
+}
+.bg-gradient-to-r.from-\[\#ffaa00\].via-amber-400.to-\[\#00f5ff\] {
+  background-image: linear-gradient(to right, var(--color-primary), #c084fc, var(--color-secondary)) !important;
+}
+.bg-[#00f5ff]/5 {
+  background-color: rgba(168, 85, 247, 0.05) !important;
+}
+.bg-[#ffaa00]/5 {
+  background-color: rgba(217, 70, 239, 0.04) !important;
+}
+
+/* Override domain card borders to fit purple styling */
+.border-cyan-500\/20 {
+  border-color: rgba(217, 70, 239, 0.2) !important;
+}
+.hover\:border-cyan-500\/50:hover {
+  border-color: rgba(217, 70, 239, 0.5) !important;
+}
+.border-cyan-400\/20 {
+  border-color: rgba(168, 85, 247, 0.2) !important;
+}
+.hover\:border-cyan-400\/50:hover {
+  border-color: rgba(168, 85, 247, 0.5) !important;
+}
+.text-cyan-400 {
+  color: #c084fc !important;
+}
+.text-cyan-300 {
+  color: #e9d5ff !important;
+}
+.bg-cyan-500\/10 {
+  background-color: rgba(217, 70, 239, 0.08) !important;
+}
+.border-cyan-500\/20 {
+  border-color: rgba(217, 70, 239, 0.2) !important;
+}

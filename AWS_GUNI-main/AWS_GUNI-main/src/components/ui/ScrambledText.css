@@ -1,0 +1,12 @@
+.text-block {
+  font-family: monospace;
+  font-size: inherit;
+  color: inherit;
+  display: inline-block;
+  max-width: 100%;
+}
+
+.char {
+  will-change: transform;
+  display: inline-block;
+}
