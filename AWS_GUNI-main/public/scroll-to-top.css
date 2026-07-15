@@ -1,0 +1,90 @@
+/* =========================================================================
+   SCROLL TO TOP BUTTON STYLING
+   ========================================================================= */
+
+#scroll-to-top {
+  /* Fluid sizing and spacing using CSS clamp() ensures the button scales smoothly 
+     across all devices (from small 320px smartphones to large 4000px+ desktop monitors)
+     without sudden jumps or layout breakage that typically occur with media queries. 
+     This placement as a direct child of <body> guarantees "position: fixed" works 
+     properly relative to the viewport on every browser engine. */
+  position: fixed;
+  bottom: clamp(16px, 3vw, 40px);
+  right: clamp(16px, 3vw, 40px);
+  
+  /* Safe-area support using env() prevents hardware notches, punch-hole cameras, 
+     or virtual home indicator bars on modern iOS/Android and foldable devices from overlapping 
+     or hiding the button. env() variables fall back to 0px if unsupported. */
+  bottom: calc(clamp(16px, 3vw, 40px) + env(safe-area-inset-bottom));
+  right: calc(clamp(16px, 3vw, 40px) + env(safe-area-inset-right));
+  
+  /* Ensure the button's z-index stays higher than navigation bars, footers, and other sticky/fixed page elements. */
+  z-index: 999999 !important;
+  
+  /* Fluid width and height using clamp() scales the touch target seamlessly between 40px and 60px. */
+  width: clamp(40px, 6vw, 60px);
+  height: clamp(40px, 6vw, 60px);
+  
+  /* Layout: Center the SVG icon inside */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  /* Theme-matched Glassmorphism & Colors */
+  background-color: rgba(168, 85, 247, 0.75); /* Purple with opacity */
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  box-shadow: 0 4px 15px rgba(168, 85, 247, 0.3);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  
+  /* Transition state for showing/hiding & interactions */
+  cursor: pointer;
+  outline: none;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(15px) scale(0.85);
+  transition: 
+    opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+/* Visibility state toggled by scroll JavaScript */
+#scroll-to-top.visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
+}
+
+/* Hover, active and focus states for mouse and accessibility key users */
+#scroll-to-top:hover {
+  background-color: #9333ea; /* Darker purple on hover */
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 6px 20px rgba(168, 85, 247, 0.6);
+  transform: translateY(-2px) scale(1.08);
+}
+
+#scroll-to-top:active {
+  transform: translateY(0) scale(0.95);
+}
+
+#scroll-to-top:focus-visible {
+  outline: 3px solid #ffaa00; /* Contrast orange focus outline */
+  outline-offset: 3px;
+}
+
+/* Ensure the SVG icon scales proportionally with the button size on all devices */
+#scroll-to-top svg {
+  width: 40%;
+  height: 40%;
+  min-width: 18px;
+  min-height: 18px;
+  display: block;
+}
+
+/* All device-specific media queries for position/size are removed to avoid coverage gaps */
+

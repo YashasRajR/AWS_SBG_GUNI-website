@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Calendar, MapPin, ArrowRight, ChevronRight } from 'lucide-react';
 
@@ -130,13 +131,13 @@ export const EventsSection: React.FC<EventsSectionProps> = ({ events }) => {
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.15, ease: "easeOut" }}
           >
-            <Link
-              to="/events"
+            <a
+              href="#events"
               className="px-5 py-2.5 rounded-xl border border-white/10 hover:border-purple-500/50 hover:bg-white/5 text-sm font-semibold uppercase tracking-wider transition-all duration-300 flex items-center gap-2 group text-slate-300 hover:text-white"
             >
               All Events
               <ArrowRight className="w-4 h-4 text-purple-400 group-hover:translate-x-1 transition-transform" />
-            </Link>
+            </a>
           </motion.div>
         </div>
 
@@ -236,7 +237,7 @@ const EventCard: React.FC<{ event: EventData; index: number }> = ({ event, index
             {event.venue}
           </span>
           <Link
-            to={`/events?id=${event.id}`}
+            to={`/?id=${event.id}#events`}
             className="w-full flex justify-center items-center px-4.5 min-h-[48px] text-xs font-bold uppercase tracking-wider text-black bg-white group-hover:bg-[#a855f7] group-hover:text-white rounded-full transition-colors gap-2 shrink-0 active:scale-95"
           >
             Inspect

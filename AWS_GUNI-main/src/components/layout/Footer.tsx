@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { Mail, MapPin, Phone, Globe } from 'lucide-react';
 import { LinkedinIcon, GithubIcon, TwitterIcon, MeetupIcon } from '../ui/SocialIcons';
 import { Logo } from '../ui/Logo';
@@ -18,7 +17,7 @@ export const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8 mb-12">
           {/* Brand Info Column */}
           <div className="md:col-span-1 space-y-4">
-            <Link to="/" className="flex items-center gap-2.5 group">
+            <a href="#home" className="flex items-center gap-2.5 group">
               <Logo size={24} className="group-hover:scale-105 transition-transform duration-300 shrink-0" />
               <div className="flex flex-col border-r border-white/20 pr-3 shrink-0">
                 <span className="text-white font-bold text-sm font-heading tracking-wide group-hover:text-[#a855f7] transition-colors duration-300">
@@ -29,7 +28,7 @@ export const Footer: React.FC = () => {
                 </span>
               </div>
               <img src="/guni-logo.png" alt="Ganpat University Centre of Excellence" className="h-7 sm:h-9 object-contain ml-1 shrink-0" />
-            </Link>
+            </a>
             
             <p className="text-sm sm:text-base text-slate-400 leading-relaxed font-sans pr-4 pt-1">
               A platform to learn, build, and innovate with the power of AWS Cloud. Connecting students with hands-on learning, innovation, and real-world opportunities.
@@ -92,34 +91,34 @@ export const Footer: React.FC = () => {
             </h4>
             <ul className="space-y-2.5 text-sm font-sans">
               <li>
-                <Link to="/" className="hover:text-[#a855f7] transition-colors">
+                <a href="#home" className="hover:text-[#a855f7] transition-colors">
                   Home
-                </Link>
+                </a>
               </li>
               <li>
-                <Link to="/about" className="hover:text-[#a855f7] transition-colors">
+                <a href="#about" className="hover:text-[#a855f7] transition-colors">
                   About Us
-                </Link>
+                </a>
               </li>
               <li>
-                <Link to="/team" className="hover:text-[#a855f7] transition-colors">
+                <a href="#team" className="hover:text-[#a855f7] transition-colors">
                   Our Team
-                </Link>
+                </a>
               </li>
               <li>
-                <Link to="/events" className="hover:text-[#a855f7] transition-colors">
+                <a href="#events" className="hover:text-[#a855f7] transition-colors">
                   Upcoming & Past Events
-                </Link>
+                </a>
               </li>
               <li>
-                <Link to="/gallery" className="hover:text-[#a855f7] transition-colors">
+                <a href="#gallery" className="hover:text-[#a855f7] transition-colors">
                   Activity Gallery
-                </Link>
+                </a>
               </li>
               <li>
-                <Link to="/contact" className="hover:text-[#a855f7] transition-colors">
+                <a href="#contact" className="hover:text-[#a855f7] transition-colors">
                   Contact Support
-                </Link>
+                </a>
               </li>
             </ul>
           </div>

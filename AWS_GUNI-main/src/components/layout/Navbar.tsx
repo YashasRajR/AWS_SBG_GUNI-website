@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Logo } from '../ui/Logo';
@@ -7,7 +6,7 @@ import { Logo } from '../ui/Logo';
 export const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const location = useLocation();
+  const [activeSection, setActiveSection] = useState('home');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,10 +21,38 @@ export const Navbar: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close mobile nav on route change
+  // IntersectionObserver Scroll Spy to auto-highlight navbar links
   useEffect(() => {
-    setIsOpen(false);
-  }, [location]);
+    const sections = ['home', 'about', 'team', 'events', 'gallery', 'contact'];
+    
+    const observerOptions = {
+      root: null,
+      rootMargin: '-35% 0px -55% 0px', // Highlights section currently in primary view
+      threshold: 0,
+    };
+
+    const observerCallback = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+    sections.forEach((id) => {
+      const element = document.getElementById(id);
+      if (element) observer.observe(element);
+    });
+
+    return () => {
+      sections.forEach((id) => {
+        const element = document.getElementById(id);
+        if (element) observer.unobserve(element);
+      });
+    };
+  }, []);
 
   // Scroll lock for mobile drawer
   useEffect(() => {
@@ -40,12 +67,12 @@ export const Navbar: React.FC = () => {
   }, [isOpen]);
 
   const navLinks = [
-    { name: 'Home', path: '/' },
-    { name: 'About Us', path: '/about' },
-    { name: 'Team', path: '/team' },
-    { name: 'Events', path: '/events' },
-    { name: 'Gallery', path: '/gallery' },
-    { name: 'Contact', path: '/contact' },
+    { name: 'Home', path: '#home', id: 'home' },
+    { name: 'About Us', path: '#about', id: 'about' },
+    { name: 'Team', path: '#team', id: 'team' },
+    { name: 'Events', path: '#events', id: 'events' },
+    { name: 'Gallery', path: '#gallery', id: 'gallery' },
+    { name: 'Contact', path: '#contact', id: 'contact' },
   ];
 
   return (
@@ -60,37 +87,33 @@ export const Navbar: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 xl:px-12">
           <div className="flex items-center justify-between">
             {/* Logo Brand (Hidden initially on Home page, appears on scroll. Not rendered on other pages) */}
-            <Link 
-              to="/" 
-              className={`flex items-center gap-3 group transition-all duration-500 transform ${
-                !scrolled && !isOpen 
-                  ? 'opacity-0 -translate-x-4 pointer-events-none' 
-                  : 'opacity-100 translate-x-0 pointer-events-auto'
-              }`}
+            <a 
+              href="#home" 
+              className="flex items-center gap-2.5 sm:gap-3 group transition-all duration-500 transform opacity-100 translate-x-0 pointer-events-auto shrink-0"
             >
               <Logo size={32} className="group-hover:scale-110 transition-transform duration-300 shrink-0" />
 
-              <div className="hidden sm:flex flex-col border-r border-white/20 pr-4 shrink-0">
-                <span className="text-white font-bold text-sm md:text-base font-heading tracking-wide group-hover:text-[#a855f7] transition-colors duration-300">
+              <div className="hidden min-[400px]:flex flex-col border-r border-white/20 pr-3 sm:pr-4 shrink-0">
+                <span className="text-white font-bold text-xs sm:text-sm md:text-base font-heading tracking-wide group-hover:text-[#a855f7] transition-colors duration-300">
                   AWS Student Builder Group
                 </span>
-                <span className="text-[10px] text-purple-400 font-mono tracking-widest uppercase">
+                <span className="text-[8px] sm:text-[10px] text-purple-400 font-mono tracking-widest uppercase">
                   Ganpat University
                 </span>
               </div>
               
-              <img src="/guni-logo.png" alt="Ganpat University" className="h-8 md:h-10 object-contain ml-2 shrink-0 hidden sm:block" />
-            </Link>
+              <img src="/guni-logo.png" alt="Ganpat University" className="h-6 sm:h-8 md:h-10 object-contain ml-1.5 sm:ml-2 shrink-0" />
+            </a>
 
             {/* Desktop Navigation */}
             <div className={`hidden lg:flex items-center transition-all duration-500 gap-10`}>
               <div className="flex items-center gap-8">
                 {navLinks.map((link) => {
-                  const isActive = location.pathname === link.path;
+                  const isActive = activeSection === link.id;
                   return (
-                    <Link
+                    <a
                       key={link.name}
-                      to={link.path}
+                      href={link.path}
                       className={`relative text-sm font-semibold tracking-wide uppercase transition-colors duration-300 ${
                         isActive
                           ? 'text-white'
@@ -104,7 +127,7 @@ export const Navbar: React.FC = () => {
                           className="absolute -bottom-2 left-0 right-0 h-0.5 bg-[#a855f7] rounded-full"
                         />
                       )}
-                    </Link>
+                    </a>
                   );
                 })}
               </div>
@@ -170,7 +193,7 @@ export const Navbar: React.FC = () => {
 
               <div className="flex flex-col space-y-6">
                 {navLinks.map((link, index) => {
-                  const isActive = location.pathname === link.path;
+                  const isActive = activeSection === link.id;
                   return (
                     <motion.div
                       key={link.name}
@@ -178,8 +201,9 @@ export const Navbar: React.FC = () => {
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.1 + index * 0.05 }}
                     >
-                      <Link
-                        to={link.path}
+                      <a
+                        href={link.path}
+                        onClick={() => setIsOpen(false)}
                         className={`flex items-center min-h-[48px] text-2xl font-bold tracking-tight transition-all duration-300 ${
                           isActive
                             ? 'text-white'
@@ -190,7 +214,7 @@ export const Navbar: React.FC = () => {
                         {isActive && (
                           <span className="ml-4 block h-1.5 w-1.5 bg-[#a855f7] rounded-full" />
                         )}
-                      </Link>
+                      </a>
                     </motion.div>
                   );
                 })}

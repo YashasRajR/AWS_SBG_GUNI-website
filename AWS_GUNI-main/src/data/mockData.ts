@@ -165,7 +165,7 @@ export const EVENTS: EventItem[] = [
     date: 'July 5 - 11, 2026',
     venue: 'Online Event (Meetup Live)',
     type: 'community',
-    status: 'ongoing',
+    status: 'past',
     poster: '/gallery/gujarat_builder_week_poster.png',
     description: 'Get ready for AWS Gujarat Students Builder Week 2026 — a 7-day virtual learning experience organized by the AWS Student Builder Group Leaders – Gujarat.',
     details: 'Get ready for AWS Gujarat Students Builder Week 2026 — a 7-day virtual learning experience organized by the AWS Student Builder Group Leaders – Gujarat.\n\nWhat to expect:\n- 10+ Industry Experts & Community Leaders\n- 7 Days of Continuous Learning\n- Live Interactive Q&A Sessions\n- E-Certificates for Special Achievers\n- Hands-on AWS & Cloud Learning\n\n🗓️ Date: 5th – 11th July 2026\n📍 Mode: Online\n⏰ Time: To be announced\n🎟️ Registration is open on Meetup! Join us to learn, connect, and build with the AWS community.',
@@ -281,5 +281,40 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     category: 'community',
     image: '/gallery/community2.png',
     date: 'January 2026'
+  },
+  {
+    id: 'gal-9',
+    title: "Nirmal Pathak Sir's Keynote - Day 2 Glimpse",
+    category: 'speaker',
+    image: '/gallery/day2_nirmal_1.png',
+    date: 'July 2026'
+  },
+  {
+    id: 'gal-10',
+    title: 'Mastering AWS and Cloud Innovation with Manthan Sir',
+    category: 'speaker',
+    image: '/gallery/day2_manthan_1.png',
+    date: 'July 2026'
+  },
+  {
+    id: 'gal-11',
+    title: 'Day 2 Group - Concepts to Career Insights',
+    category: 'community',
+    image: '/gallery/day2_group_1.png',
+    date: 'July 2026'
+  },
+  {
+    id: 'gal-12',
+    title: 'Day 2 Closing - Collaboration & Innovation Glimpse',
+    category: 'community',
+    image: '/gallery/day2_group_2.png',
+    date: 'July 2026'
+  },
+  {
+    id: 'gal-13',
+    title: 'Exploring AWS Cloud Infrastructure Foundations by Nirmal Sir',
+    category: 'workshop',
+    image: '/gallery/day2_nirmal_2.png',
+    date: 'July 2026'
   }
 ];

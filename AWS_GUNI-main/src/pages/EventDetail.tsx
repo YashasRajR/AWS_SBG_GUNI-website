@@ -28,7 +28,7 @@ export const EventDetail: React.FC<EventDetailProps> = ({ event }) => {
         <ShieldAlert className="w-16 h-16 text-red-500 mx-auto" />
         <h2 className="text-2xl font-bold text-white font-heading">Event Node Not Found</h2>
         <p className="text-slate-400">The event node requested could not be resolved in the AWS GUNI space data matrix.</p>
-        <Link to="/events" className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#a855f7] text-white font-bold uppercase text-xs rounded-full hover:bg-purple-600 transition-colors shadow-lg shadow-[#a855f7]/75">
+        <Link to="/" className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#a855f7] text-white font-bold uppercase text-xs rounded-full hover:bg-purple-600 transition-colors shadow-lg shadow-[#a855f7]/75">
           <ArrowLeft className="w-4 h-4" /> Back to Orbit Events
         </Link>
       </div>
@@ -52,7 +52,7 @@ export const EventDetail: React.FC<EventDetailProps> = ({ event }) => {
       {/* Back to Events Nav */}
       <div className="mb-8">
         <Link 
-          to="/events" 
+          to="/" 
           className="inline-flex items-center gap-2 text-sm text-slate-400 hover:text-[#a855f7] transition-colors uppercase tracking-wider font-semibold"
         >
           <ArrowLeft className="w-4 h-4" /> Back to Orbit list
@@ -342,7 +342,7 @@ export const EventDetail: React.FC<EventDetailProps> = ({ event }) => {
                   </div>
                   
                   <Link
-                    to="/events"
+                    to="/"
                     className="w-full flex items-center justify-center h-12 border border-white/10 hover:border-purple-400 text-white hover:bg-white/5 rounded-full font-bold uppercase tracking-wider text-xs transition-all active:scale-95"
                   >
                     View other events

@@ -1,5 +1,13 @@
+/*
+=========================================================================
+SECTION: Home (Hero, About Summary, Marquee, Stats, Circuit Bento, CTA)
+Edit the text/images below. Do not change the tags/classes.
+=========================================================================
+*/
+
 import React from 'react';
 import { Link } from 'react-router-dom';
+
 import { motion } from 'framer-motion';
 import { 
   ArrowRight, Users, Calendar, ChevronRight, MessageSquare, MapPin 
@@ -157,13 +165,13 @@ export const Home: React.FC = () => {
             >
               Join Community
             </a>
-            <Link
-              to="/events"
+            <a
+              href="#events"
               className="w-full sm:w-auto px-8 min-h-[48px] flex items-center justify-center rounded-full font-bold uppercase tracking-wider text-sm text-white bg-white/5 border border-white/10 hover:border-[#a855f7] hover:text-[#a855f7] hover:bg-white/10 transition-all text-center gap-2 active:scale-95"
             >
               Explore Events
               <ArrowRight className="w-4 h-4 text-[#a855f7]" />
-            </Link>
+            </a>
           </motion.div>
         </div>
       </section>
@@ -336,8 +344,8 @@ export const Home: React.FC = () => {
                               {event.venue}
                             </span>
                             <Link
-                              to={`/events?id=${event.id}`}
-                              className="w-full flex justify-center items-center px-4 min-h-[48px] text-xs font-bold uppercase tracking-wider text-black bg-white group-hover:bg-[#00f5ff] rounded-full transition-colors gap-2 shrink-0 cursor-pointer active:scale-95"
+                              to={`/?id=${event.id}#events`}
+                              className="w-full flex justify-center items-center px-4 min-h-[48px] text-xs font-bold uppercase tracking-wider text-black bg-white group-hover:bg-[#a855f7] group-hover:text-white rounded-full transition-colors gap-2 shrink-0 cursor-pointer active:scale-95"
                             >
                               Inspect Details
                               <ChevronRight className="w-4 h-4" />
