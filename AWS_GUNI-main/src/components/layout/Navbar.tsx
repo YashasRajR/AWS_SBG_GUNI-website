@@ -59,28 +59,30 @@ export const Navbar: React.FC = () => {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 xl:px-12">
           <div className="flex items-center justify-between">
-            {/* Logo Brand (Hidden initially on Home page, appears on scroll. Not rendered on other pages) */}
-            <Link 
-              to="/" 
-              className={`flex items-center gap-3 group transition-all duration-500 transform ${
-                !scrolled && !isOpen 
-                  ? 'opacity-0 -translate-x-4 pointer-events-none' 
-                  : 'opacity-100 translate-x-0 pointer-events-auto'
-              }`}
-            >
-              <Logo size={32} className="group-hover:scale-110 transition-transform duration-300 shrink-0" />
+            {/* Logo Brand (Only rendered on Home page) */}
+            {location.pathname === '/' && (
+              <Link 
+                to="/" 
+                className={`flex items-center gap-3 group transition-all duration-500 transform ${
+                  !scrolled && !isOpen 
+                    ? 'opacity-0 -translate-x-4 pointer-events-none' 
+                    : 'opacity-100 translate-x-0 pointer-events-auto'
+                }`}
+              >
+                <Logo size={32} className="group-hover:scale-110 transition-transform duration-300 shrink-0" />
 
-              <div className="hidden sm:flex flex-col border-r border-white/20 pr-4 shrink-0">
-                <span className="text-white font-bold text-sm md:text-base font-heading tracking-wide group-hover:text-[#a855f7] transition-colors duration-300">
-                  AWS Student Builder Group
-                </span>
-                <span className="text-[10px] text-purple-400 font-mono tracking-widest uppercase">
-                  Ganpat University
-                </span>
-              </div>
-              
-              <img src="/guni-logo.png" alt="Ganpat University" className="h-8 md:h-10 object-contain ml-2 shrink-0 hidden sm:block" />
-            </Link>
+                <div className="hidden sm:flex flex-col border-r border-white/20 pr-4 shrink-0">
+                  <span className="text-white font-bold text-sm md:text-base font-heading tracking-wide group-hover:text-[#a855f7] transition-colors duration-300">
+                    AWS Student Builder Group
+                  </span>
+                  <span className="text-[10px] text-purple-400 font-mono tracking-widest uppercase">
+                    Ganpat University
+                  </span>
+                </div>
+                
+                <img src="/guni-logo.png" alt="Ganpat University" className="h-8 md:h-10 object-contain ml-2 shrink-0 hidden sm:block" />
+              </Link>
+            )}
 
             {/* Desktop Navigation */}
             <div className={`hidden lg:flex items-center transition-all duration-500 gap-10`}>
