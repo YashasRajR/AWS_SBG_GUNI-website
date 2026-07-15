@@ -1,3 +1,10 @@
+/*
+=========================================================================
+SECTION: Team (Coordinators, Lead, Adviser, Crew Grid)
+Edit the text/images below. Do not change the tags/classes.
+=========================================================================
+*/
+
 import React from 'react';
 import { TeamCard } from '../components/ui/TeamCard';
 import { TypewriterText } from '../components/ui/TypewriterText';
@@ -19,7 +26,7 @@ const teamMembers: TeamMember[] = [
   {
     id: 'advisor-aric',
     name: 'Aric Pandya',
-    role: 'SBG Adviser',
+    role: 'Advisor',
     tagline: 'Guiding student cloud builders through advanced architectural principles, cloud roadmaps, and career development initiatives.',
     photo: '/gallery/Aric.png',
     linkedin: 'https://linkedin.com/in/aricpandya',
@@ -216,21 +223,21 @@ const teamMembers: TeamMember[] = [
 
 export const Team: React.FC = () => {
   const coordinator = {
-    name: "Pravesh Patel",
-    designation: "Faculty Coordinator",
-    role: "SBG Coordinator",
-    tagline: "Academic Innovation & Cloud Architect Bridge",
-    profileImage: "/gallery/Pravesh.png",
-    linkedin: "https://linkedin.com/in/pravesh-patel-43573a10"
-  };
-
-  const coordinator2 = {
     name: "Dr. Kiran Amin",
-    designation: "Faculty Coordinator",
-    role: "SBG Coordinator",
+    designation: "Mentor",
+    role: "Mentor",
     tagline: "Academic Leadership & Excellence",
     profileImage: "/gallery/KiranAmin.png",
     linkedin: "#"
+  };
+
+  const coordinator2 = {
+    name: "Dr. Pravesh Patel",
+    designation: "Faculty Coordinator",
+    role: "Faculty Coordinator",
+    tagline: "Academic Innovation & Cloud Architect Bridge",
+    profileImage: "/gallery/Pravesh.png",
+    linkedin: "https://linkedin.com/in/pravesh-patel-43573a10"
   };
 
   const leader = {
@@ -262,15 +269,15 @@ export const Team: React.FC = () => {
       {/* SBG Coordinator & Leader Section */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20 relative z-10 flex flex-col gap-20">
         
-        {/* Coordinator */}
+        {/* Mentor */}
         <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16">
           <div className="flex-1 flex justify-end md:pr-8">
             <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold font-heading tracking-tight flex items-center justify-center md:justify-end gap-4 w-full">
-              <TypewriterText text="SBG Coordinator" speed={70} cursor={false} className="text-transparent bg-clip-text bg-gradient-to-r from-[#d8b4fe] to-[#7e22ce]" />
+              <TypewriterText text="Mentor" speed={70} cursor={false} className="text-transparent bg-clip-text bg-gradient-to-r from-[#d8b4fe] to-[#7e22ce]" />
               <span className="w-2 h-10 rounded-full bg-[#a855f7] text-glow shrink-0" />
             </h2>
           </div>
-          <div className="flex-1 flex flex-col sm:flex-row justify-center md:justify-start md:pl-8 w-full gap-6">
+          <div className="flex-1 flex justify-center md:justify-start md:pl-8 w-full">
             <TeamCard
               member={{
                 name: coordinator.name,
@@ -282,6 +289,18 @@ export const Team: React.FC = () => {
                 linkedin: coordinator.linkedin
               }}
             />
+          </div>
+        </div>
+
+        {/* Faculty Coordinator */}
+        <div className="flex flex-col md:flex-row-reverse items-center justify-center gap-8 md:gap-16">
+          <div className="flex-1 flex justify-start md:pl-8">
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold font-heading tracking-tight flex items-center justify-center md:justify-start gap-4 w-full">
+              <span className="w-2 h-10 rounded-full bg-[#d946ef] text-glow shrink-0" />
+              <TypewriterText text="Faculty Coordinator" speed={70} cursor={false} className="text-transparent bg-clip-text bg-gradient-to-r from-[#d8b4fe] to-[#7e22ce]" />
+            </h2>
+          </div>
+          <div className="flex-1 flex justify-center md:justify-end md:pr-8 w-full">
             <TeamCard
               member={{
                 name: coordinator2.name,
@@ -297,14 +316,14 @@ export const Team: React.FC = () => {
         </div>
 
         {/* Leader */}
-        <div className="flex flex-col md:flex-row-reverse items-center justify-center gap-8 md:gap-16">
-          <div className="flex-1 flex justify-start md:pl-8">
-            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold font-heading tracking-tight flex items-center justify-center md:justify-start gap-4 w-full">
-              <span className="w-2 h-10 rounded-full bg-[#d946ef] text-glow shrink-0" />
+        <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16">
+          <div className="flex-1 flex justify-end md:pr-8">
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold font-heading tracking-tight flex items-center justify-center md:justify-end gap-4 w-full">
               <TypewriterText text="SBG Leader" speed={70} cursor={false} className="text-transparent bg-clip-text bg-gradient-to-r from-[#d8b4fe] to-[#7e22ce]" />
+              <span className="w-2 h-10 rounded-full bg-[#a855f7] text-glow shrink-0" />
             </h2>
           </div>
-          <div className="flex-1 flex justify-center md:justify-end md:pr-8 w-full">
+          <div className="flex-1 flex justify-center md:justify-start md:pl-8 w-full">
             <TeamCard
               member={{
                 name: leader.name,
@@ -326,14 +345,14 @@ export const Team: React.FC = () => {
         if (!adviser) return null;
         return (
           <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-24 relative z-10">
-            <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16">
-              <div className="flex-1 flex justify-end md:pr-8">
-                <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold font-heading tracking-tight flex items-center justify-center md:justify-end gap-4 w-full">
-                  <TypewriterText text="SBG Adviser" speed={70} cursor={false} className="text-transparent bg-clip-text bg-gradient-to-r from-[#d8b4fe] to-[#7e22ce]" />
+            <div className="flex flex-col md:flex-row-reverse items-center justify-center gap-8 md:gap-16">
+              <div className="flex-1 flex justify-start md:pl-8">
+                <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold font-heading tracking-tight flex items-center justify-center md:justify-start gap-4 w-full">
                   <span className="w-2 h-10 rounded-full bg-[#ffaa00] text-glow shrink-0" />
+                  <TypewriterText text="Advisor" speed={70} cursor={false} className="text-transparent bg-clip-text bg-gradient-to-r from-[#d8b4fe] to-[#7e22ce]" />
                 </h2>
               </div>
-              <div className="flex-1 flex justify-center md:justify-start md:pl-8 w-full">
+              <div className="flex-1 flex justify-center md:justify-end md:pr-8 w-full">
                 <TeamCard
                   member={{
                     name: adviser.name,

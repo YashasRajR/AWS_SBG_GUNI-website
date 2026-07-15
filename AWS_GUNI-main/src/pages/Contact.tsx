@@ -1,3 +1,10 @@
+/*
+=========================================================================
+SECTION: Contact (Information, Campus Node Map, Reach Out Form)
+Edit the text/images below. Do not change the tags/classes.
+=========================================================================
+*/
+
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 

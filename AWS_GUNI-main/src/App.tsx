@@ -1,6 +1,11 @@
+/*
+This page has sections in this order: Home, About Us, Our Team, Events, Gallery, Contact.
+To edit text or images, find the matching SECTION comment below.
+*/
+
 import React, { useEffect } from 'react';
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
+import { BrowserRouter, useLocation } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 // Layout and Common UI Components
 import { Navbar } from './components/layout/Navbar';
@@ -17,56 +22,79 @@ import { Contact } from './pages/Contact';
 
 // Scroll Restoration helper
 const ScrollToTop: React.FC = () => {
-  const { pathname, search } = useLocation();
+  const { pathname } = useLocation();
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [pathname, search]);
+  }, [pathname]);
 
   return null;
 };
 
-// Page Transition Wrapper
-const PageTransition: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const location = useLocation();
-
-  return (
-    <motion.div
-      key={location.pathname}
-      initial={{ opacity: 0, y: 15 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -15 }}
-      transition={{ duration: 0.45, ease: 'easeOut' }}
-      className="flex-1 flex flex-col"
-    >
-      {children}
-    </motion.div>
-  );
-};
-
 const AppContent: React.FC = () => {
-  const location = useLocation();
-
   return (
-    <div className="flex flex-col min-h-screen relative text-slate-100 selection:bg-[#ff9900]/30 selection:text-[#ff9900] w-full max-w-[100vw]">
+    <div className="flex flex-col min-h-screen relative text-slate-100 selection:bg-[#ff9900]/30 selection:text-[#ff9900] w-full max-w-[100vw] overflow-x-hidden">
       {/* Interactive global click sonar sweeping waves */}
       <SonarClickEffect />
 
       {/* Sticky navigation header */}
       <Navbar />
 
-      {/* Main viewport routes with fade animation container */}
+      {/* Main viewport sections stacked in order */}
       <main className="flex-1 flex flex-col relative z-10 w-full">
-        <AnimatePresence mode="wait">
-          <Routes location={location} key={location.pathname}>
-            <Route path="/" element={<PageTransition><Home /></PageTransition>} />
-            <Route path="/about" element={<PageTransition><About /></PageTransition>} />
-            <Route path="/team" element={<PageTransition><Team /></PageTransition>} />
-            <Route path="/events" element={<PageTransition><Events /></PageTransition>} />
-            <Route path="/gallery" element={<PageTransition><Gallery /></PageTransition>} />
-            <Route path="/contact" element={<PageTransition><Contact /></PageTransition>} />
-          </Routes>
-        </AnimatePresence>
+        {/* ============================== */}
+        {/* SECTION: Home                  */}
+        {/* Edit the text/images below.    */}
+        {/* Do not change the tags/classes.*/}
+        {/* ============================== */}
+        <section id="home">
+          <Home />
+        </section>
+
+        {/* ============================== */}
+        {/* SECTION: About Us              */}
+        {/* Edit the text/images below.    */}
+        {/* Do not change the tags/classes.*/}
+        {/* ============================== */}
+        <section id="about">
+          <About />
+        </section>
+
+        {/* ============================== */}
+        {/* SECTION: Team                  */}
+        {/* Edit the text/images below.    */}
+        {/* Do not change the tags/classes.*/}
+        {/* ============================== */}
+        <section id="team">
+          <Team />
+        </section>
+
+        {/* ============================== */}
+        {/* SECTION: Events                */}
+        {/* Edit the text/images below.    */}
+        {/* Do not change the tags/classes.*/}
+        {/* ============================== */}
+        <section id="events">
+          <Events />
+        </section>
+
+        {/* ============================== */}
+        {/* SECTION: Gallery               */}
+        {/* Edit the text/images below.    */}
+        {/* Do not change the tags/classes.*/}
+        {/* ============================== */}
+        <section id="gallery">
+          <Gallery />
+        </section>
+
+        {/* ============================== */}
+        {/* SECTION: Contact               */}
+        {/* Edit the text/images below.    */}
+        {/* Do not change the tags/classes.*/}
+        {/* ============================== */}
+        <section id="contact">
+          <Contact />
+        </section>
       </main>
 
       {/* Universal Footer */}

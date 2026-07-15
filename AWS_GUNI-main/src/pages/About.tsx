@@ -1,4 +1,11 @@
-import React, { useRef } from 'react';
+/*
+=========================================================================
+SECTION: About Us (Mission, Vision, Objectives, Benefits)
+Edit the text/images below. Do not change the tags/classes.
+=========================================================================
+*/
+
+import React, { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useSpring, useTransform } from 'framer-motion';
 import { 
   Compass, Eye, Target, Network, ShieldCheck, 
@@ -63,6 +70,14 @@ const BenefitTimelineItem: React.FC<{
 }> = ({ benefit, idx, isEven, isLast }) => {
   const itemRef = useRef<HTMLDivElement>(null);
   const IconComponent = benefit.icon;
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const { scrollYProgress } = useScroll({
     target: itemRef,
@@ -77,7 +92,7 @@ const BenefitTimelineItem: React.FC<{
 
   // Card transform animations driven by scroll position
   const cardOpacity = useTransform(smoothProgress, [0.2, 0.55], [0, 1]);
-  const cardX = useTransform(smoothProgress, [0.2, 0.55], [isEven ? 40 : -40, 0]);
+  const cardX = useTransform(smoothProgress, [0.2, 0.55], [isMobile ? 0 : (isEven ? 40 : -40), 0]);
   const cardY = useTransform(smoothProgress, [0.2, 0.55], [15, 0]);
 
   // Circle node animations driven by scroll position

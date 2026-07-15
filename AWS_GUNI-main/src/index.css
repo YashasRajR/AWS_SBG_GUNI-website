@@ -2,6 +2,11 @@
 
 @import "tailwindcss";
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
 :root {
   /* ── 4-Font System ── */
   --font-sans:    'Inter', system-ui, sans-serif;

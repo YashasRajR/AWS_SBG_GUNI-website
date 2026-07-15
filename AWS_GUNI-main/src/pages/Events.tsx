@@ -1,3 +1,10 @@
+/*
+=========================================================================
+SECTION: Events (Timeline, Registration, Meetup RSVPs)
+Edit the text/images below. Do not change the tags/classes.
+=========================================================================
+*/
+
 import React, { useState } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
