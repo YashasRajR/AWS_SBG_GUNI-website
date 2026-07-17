@@ -224,7 +224,7 @@ const teamMembers: TeamMember[] = [
 export const Team: React.FC = () => {
   const coordinator = {
     name: "Dr. Kiran Amin",
-    designation: "Mentor",
+    designation: "Deputy Pro Vice Chancellor & Executive Dean FoET Principal (GUNI - UVPCE)",
     role: "Mentor",
     tagline: "Academic Leadership & Excellence",
     profileImage: "/gallery/KiranAmin.png",
@@ -260,115 +260,69 @@ export const Team: React.FC = () => {
       </div>
 
       {/* Main Section Header */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-32 relative z-10">
-        <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#d8b4fe] to-[#7e22ce] font-heading tracking-tight">
-          Our Team
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-32 relative z-10">
+        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold font-poppins uppercase text-left w-full block whitespace-pre-wrap break-words">
+          <span className="bg-gradient-to-b from-[#190a2b] to-[#d6aeff] bg-clip-text text-transparent inline-block pb-1">
+            Our Team
+          </span>
         </h1>
       </section>
 
-      {/* SBG Coordinator & Leader Section */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20 relative z-10 flex flex-col gap-20">
-        
-        {/* Mentor */}
-        <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16">
-          <div className="flex-1 flex justify-end md:pr-8">
-            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold font-heading tracking-tight flex items-center justify-center md:justify-end gap-4 w-full">
-              <TypewriterText text="Mentor" speed={70} cursor={false} className="text-transparent bg-clip-text bg-gradient-to-r from-[#d8b4fe] to-[#7e22ce]" />
-              <span className="w-2 h-10 rounded-full bg-[#a855f7] text-glow shrink-0" />
-            </h2>
-          </div>
-          <div className="flex-1 flex justify-center md:justify-start md:pl-8 w-full">
-            <TeamCard
-              member={{
-                name: coordinator.name,
-                designation: coordinator.designation,
-                role: coordinator.role,
-                tagline: coordinator.tagline,
-                description: coordinator.tagline,
-                profileImage: coordinator.profileImage,
-                linkedin: coordinator.linkedin
-              }}
-            />
-          </div>
-        </div>
-
-        {/* Faculty Coordinator */}
-        <div className="flex flex-col md:flex-row-reverse items-center justify-center gap-8 md:gap-16">
-          <div className="flex-1 flex justify-start md:pl-8">
-            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold font-heading tracking-tight flex items-center justify-center md:justify-start gap-4 w-full">
-              <span className="w-2 h-10 rounded-full bg-[#d946ef] text-glow shrink-0" />
-              <TypewriterText text="Faculty Coordinator" speed={70} cursor={false} className="text-transparent bg-clip-text bg-gradient-to-r from-[#d8b4fe] to-[#7e22ce]" />
-            </h2>
-          </div>
-          <div className="flex-1 flex justify-center md:justify-end md:pr-8 w-full">
-            <TeamCard
-              member={{
-                name: coordinator2.name,
-                designation: coordinator2.designation,
-                role: coordinator2.role,
-                tagline: coordinator2.tagline,
-                description: coordinator2.tagline,
-                profileImage: coordinator2.profileImage,
-                linkedin: coordinator2.linkedin
-              }}
-            />
-          </div>
-        </div>
-
-        {/* Leader */}
-        <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16">
-          <div className="flex-1 flex justify-end md:pr-8">
-            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold font-heading tracking-tight flex items-center justify-center md:justify-end gap-4 w-full">
-              <TypewriterText text="SBG Leader" speed={70} cursor={false} className="text-transparent bg-clip-text bg-gradient-to-r from-[#d8b4fe] to-[#7e22ce]" />
-              <span className="w-2 h-10 rounded-full bg-[#a855f7] text-glow shrink-0" />
-            </h2>
-          </div>
-          <div className="flex-1 flex justify-center md:justify-start md:pl-8 w-full">
-            <TeamCard
-              member={{
-                name: leader.name,
-                designation: leader.designation,
-                role: leader.role,
-                tagline: leader.tagline,
-                description: leader.tagline,
-                profileImage: leader.profileImage,
-                linkedin: leader.linkedin
-              }}
-            />
-          </div>
+      {/* Top Leadership Grid (Row 1) */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20 relative z-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10">
+          <TeamCard
+            member={{
+              name: coordinator.name,
+              designation: coordinator.designation,
+              role: coordinator.role,
+              tagline: coordinator.tagline,
+              description: coordinator.tagline,
+              profileImage: coordinator.profileImage,
+              linkedin: coordinator.linkedin
+            }}
+          />
+          <TeamCard
+            member={{
+              name: coordinator2.name,
+              designation: coordinator2.designation,
+              role: coordinator2.role,
+              tagline: coordinator2.tagline,
+              description: coordinator2.tagline,
+              profileImage: coordinator2.profileImage,
+              linkedin: coordinator2.linkedin
+            }}
+          />
+          <TeamCard
+            member={{
+              name: leader.name,
+              designation: leader.designation,
+              role: leader.role,
+              tagline: leader.tagline,
+              description: leader.tagline,
+              profileImage: leader.profileImage,
+              linkedin: leader.linkedin
+            }}
+          />
+          {(() => {
+            const adviser = teamMembers.find(m => m.name === 'Aric Pandya');
+            if (!adviser) return null;
+            return (
+              <TeamCard
+                member={{
+                  name: adviser.name,
+                  designation: adviser.team,
+                  role: adviser.role,
+                  tagline: adviser.tagline,
+                  description: adviser.tagline,
+                  profileImage: adviser.photo,
+                  linkedin: adviser.linkedin
+                }}
+              />
+            );
+          })()}
         </div>
       </section>
-
-      {/* SBG Adviser Section */}
-      {(() => {
-        const adviser = teamMembers.find(m => m.team === 'Adviser');
-        if (!adviser) return null;
-        return (
-          <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-24 relative z-10">
-            <div className="flex flex-col md:flex-row-reverse items-center justify-center gap-8 md:gap-16">
-              <div className="flex-1 flex justify-start md:pl-8">
-                <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold font-heading tracking-tight flex items-center justify-center md:justify-start gap-4 w-full">
-                  <span className="w-2 h-10 rounded-full bg-[#ffaa00] text-glow shrink-0" />
-                  <TypewriterText text="Advisor" speed={70} cursor={false} className="text-transparent bg-clip-text bg-gradient-to-r from-[#d8b4fe] to-[#7e22ce]" />
-                </h2>
-              </div>
-              <div className="flex-1 flex justify-center md:justify-end md:pr-8 w-full">
-                <TeamCard
-                  member={{
-                    name: adviser.name,
-                    designation: adviser.team,
-                    role: adviser.role,
-                    tagline: adviser.tagline,
-                    description: adviser.tagline,
-                    profileImage: adviser.photo,
-                    linkedin: adviser.linkedin
-                  }}
-                />
-              </div>
-            </div>
-          </section>
-        );
-      })()}
 
       {/* Team Crew Showcase Section */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 relative z-10">
@@ -382,9 +336,8 @@ export const Team: React.FC = () => {
           <div className="flex-1 h-[1px] bg-gradient-to-r from-[#a855f7]/20 to-transparent" />
         </div>
 
-        {/* Responsive Grid Setup: Desktop 4, Large Tablet 3, Tablet 2, Mobile 1 */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 md:gap-10">
-          {teamMembers.filter(m => m.team !== 'Adviser').map((member) => (
+          {teamMembers.filter(m => m.name !== 'Aric Pandya').map((member) => (
             <TeamCard
               key={member.id}
               member={{

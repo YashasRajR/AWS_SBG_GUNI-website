@@ -10,7 +10,7 @@ html {
 :root {
   /* ── 4-Font System ── */
   --font-sans:    'Inter', system-ui, sans-serif;
-  --font-heading: 'Sora', sans-serif;
+  --font-heading: 'Poppins', sans-serif;
   --font-mono:    'JetBrains Mono', 'Courier New', monospace;
   --font-accent:  'Cormorant Garamond', serif;
   --font-poppins: 'Poppins', sans-serif;
@@ -381,4 +381,15 @@ input:focus, textarea:focus, select:focus {
 }
 .border-cyan-500\/20 {
   border-color: rgba(217, 70, 239, 0.2) !important;
+}
+
+
+.animate-marquee-reverse {
+  display: flex;
+  width: max-content;
+  animation: marquee 35s linear infinite reverse;
+}
+
+.group\\/marquee:hover .animate-marquee-reverse {
+  animation-play-state: paused;
 }

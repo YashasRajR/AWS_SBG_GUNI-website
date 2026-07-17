@@ -38,8 +38,8 @@ export const Footer: React.FC = () => {
             <div className="flex flex-wrap items-center gap-5 pt-4">
               <a
                 href="https://www.linkedin.com/company/aws-student-builder-group-guni/"
-                target="_blank"
-                rel="noopener noreferrer"
+                
+                
                 className="w-12 h-12 rounded-full border border-white/10 hover:border-[#a855f7] hover:text-[#a855f7] flex items-center justify-center bg-white/5 transition-all hover:scale-105 active:scale-95"
                 aria-label="LinkedIn Profile"
               >
@@ -47,8 +47,8 @@ export const Footer: React.FC = () => {
               </a>
               <a
                 href="https://github.com"
-                target="_blank"
-                rel="noopener noreferrer"
+                
+                
                 className="w-12 h-12 rounded-full border border-white/10 hover:border-[#d946ef] hover:text-[#d946ef] flex items-center justify-center bg-white/5 transition-all hover:scale-105 active:scale-95"
                 aria-label="GitHub Repository"
               >
@@ -56,8 +56,8 @@ export const Footer: React.FC = () => {
               </a>
               <a
                 href="https://twitter.com"
-                target="_blank"
-                rel="noopener noreferrer"
+                
+                
                 className="w-12 h-12 rounded-full border border-white/10 hover:border-[#a855f7] hover:text-[#a855f7] flex items-center justify-center bg-white/5 transition-all hover:scale-105 active:scale-95"
                 aria-label="Twitter Profile"
               >
@@ -65,8 +65,8 @@ export const Footer: React.FC = () => {
               </a>
               <a
                 href="https://ganpatuniversity.ac.in"
-                target="_blank"
-                rel="noopener noreferrer"
+                
+                
                 className="w-12 h-12 rounded-full border border-white/10 hover:border-[#d946ef] hover:text-[#d946ef] flex items-center justify-center bg-white/5 transition-all hover:scale-105 active:scale-95"
                 aria-label="University Website"
               >
@@ -74,8 +74,8 @@ export const Footer: React.FC = () => {
               </a>
               <a
                 href="https://www.meetup.com/aws-sbg-at-ganpat-university/"
-                target="_blank"
-                rel="noopener noreferrer"
+                
+                
                 className="w-12 h-12 rounded-full border border-white/10 hover:border-[#a855f7] hover:text-[#a855f7] flex items-center justify-center bg-white/5 transition-all hover:scale-105 active:scale-95"
                 aria-label="Meetup Community Group"
               >

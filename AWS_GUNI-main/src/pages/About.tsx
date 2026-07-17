@@ -5,39 +5,15 @@ Edit the text/images below. Do not change the tags/classes.
 =========================================================================
 */
 
-import React, { useRef, useState, useEffect } from 'react';
-import { motion, useScroll, useSpring, useTransform } from 'framer-motion';
+import React from 'react';
+import { motion } from 'framer-motion';
 import { 
-  Compass, Eye, Target, Network, ShieldCheck, 
-  CheckCircle, GraduationCap, Code 
+  Compass, Eye, Target, 
+  CheckCircle 
 } from 'lucide-react';
 import { MagicBentoCard } from '../components/ui/MagicBentoCard';
 import { ScrollText } from '../components/ui/ScrollReveal';
-
-
-
-const BENEFITS = [
-  {
-    title: 'Learn AWS Cloud Fundamentals',
-    desc: 'Start from scratch and master core cloud concepts. Explore key AWS services, architecture design, and modern cloud deployment models through guided, easy-to-follow learning paths.',
-    icon: GraduationCap
-  },
-  {
-    title: 'Gain Hands-On Experience',
-    desc: 'Move beyond theory by working on real-world projects and building live applications. Get access to secure sandboxes to experiment, code, and deploy cloud infrastructure safely.',
-    icon: Code
-  },
-  {
-    title: 'Connect with Expert Speakers',
-    desc: 'Expand your professional network by attending exclusive tech talks, interactive workshops, and panel discussions led by industry professionals and AWS certified experts.',
-    icon: Network
-  },
-  {
-    title: 'Get Certified & Validated',
-    desc: 'Accelerate your career preparation with structured study groups, voucher access resources, and expert tips to confidently clear official global AWS Certifications.',
-    icon: ShieldCheck
-  }
-];
+import CircuitBentoGrid from '../components/ui/CircuitBentoGrid';
 
 // Motion Animation Variants
 const containerVariants = {
@@ -62,114 +38,8 @@ const cardVariants = {
   }
 };
 
-const BenefitTimelineItem: React.FC<{
-  benefit: typeof BENEFITS[0];
-  idx: number;
-  isEven: boolean;
-  isLast: boolean;
-}> = ({ benefit, idx, isEven, isLast }) => {
-  const itemRef = useRef<HTMLDivElement>(null);
-  const IconComponent = benefit.icon;
-  const [isMobile, setIsMobile] = useState(false);
 
-  useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth < 768);
-    handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
 
-  const { scrollYProgress } = useScroll({
-    target: itemRef,
-    offset: ["start end", "end center"]
-  });
-
-  const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001
-  });
-
-  // Card transform animations driven by scroll position
-  const cardOpacity = useTransform(smoothProgress, [0.2, 0.55], [0, 1]);
-  const cardX = useTransform(smoothProgress, [0.2, 0.55], [isMobile ? 0 : (isEven ? 40 : -40), 0]);
-  const cardY = useTransform(smoothProgress, [0.2, 0.55], [15, 0]);
-
-  // Circle node animations driven by scroll position
-  const nodeScale = useTransform(smoothProgress, [0.2, 0.55], [0.8, 1.15]);
-  const nodeBg = useTransform(smoothProgress, [0.2, 0.55], ['#0f172a', '#020205']);
-  const nodeBorder = useTransform(smoothProgress, [0.2, 0.55], ['rgba(255, 255, 255, 0.1)', '#a855f7']);
-  const nodeGlowOpacity = useTransform(smoothProgress, [0.35, 0.55], [0, 0.6]);
-  const iconColor = useTransform(smoothProgress, [0.3, 0.55], ['#94a3b8', '#a855f7']);
-
-  return (
-    <div 
-      ref={itemRef} 
-      className={`flex flex-col md:flex-row items-center justify-between gap-8 md:gap-16 w-full relative py-12 pl-16 md:pl-0 ${
-        isEven ? 'md:flex-row-reverse' : ''
-      }`}
-    >
-      {/* Vertical trace background line segment */}
-      <div className={`absolute left-6 md:left-1/2 top-0 w-[2px] -translate-x-1/2 bg-white/5 pointer-events-none ${
-        isLast ? 'h-1/2' : 'bottom-0'
-      }`} />
-      
-      {/* Animated active progress line segment */}
-      <div className={`absolute left-6 md:left-1/2 top-0 w-[2px] -translate-x-1/2 overflow-hidden pointer-events-none ${
-        isLast ? 'h-1/2' : 'bottom-0'
-      }`}>
-        <motion.div 
-          className="w-full h-full bg-gradient-to-b from-[#a855f7] via-[#c084fc] to-[#d946ef] origin-top"
-          style={{ scaleY: smoothProgress }}
-        />
-      </div>
-
-      {/* Empty space for alignment on desktop */}
-      <div className="hidden md:block w-[45%]" />
-
-      {/* Circle Node */}
-      <div className="absolute left-6 md:left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 z-10">
-        <motion.div 
-          style={{ 
-            scale: nodeScale,
-            backgroundColor: nodeBg,
-            borderColor: nodeBorder
-          }}
-          className="w-10 h-10 rounded-full border-2 flex items-center justify-center text-slate-400 relative"
-        >
-          {/* Node Glow Effect when active */}
-          <motion.div 
-            style={{ opacity: nodeGlowOpacity }}
-            className="absolute inset-0 rounded-full bg-[#a855f7]/25 blur-[6px] pointer-events-none"
-          />
-          <motion.div style={{ color: iconColor }} className="relative z-10 flex items-center justify-center">
-            <IconComponent className="w-5 h-5" />
-          </motion.div>
-        </motion.div>
-      </div>
-
-      {/* Card Content */}
-      <motion.div 
-        style={{ opacity: cardOpacity, x: cardX, y: cardY }}
-        className="w-full md:w-[45%] z-0"
-      >
-        <MagicBentoCard className="glass p-6 rounded-2xl border border-white/10 flex flex-col gap-3 hover:border-[#a855f7]/40 transition-all h-full relative group">
-          <div className="absolute inset-0 bg-[#a855f7]/5 opacity-0 group-hover:opacity-100 rounded-2xl blur-sm transition-opacity pointer-events-none" />
-          
-          <span className="text-[10px] font-mono font-bold tracking-wider text-[#a855f7] uppercase">
-            Benefit 0{idx + 1}
-          </span>
-          <h3 className="text-xl font-bold text-white font-heading">
-            {benefit.title}
-          </h3>
-          <p className="text-sm text-slate-400 leading-relaxed font-sans">
-            {benefit.desc}
-          </p>
-        </MagicBentoCard>
-      </motion.div>
-    </div>
-  );
-};
 
 export const About: React.FC = () => {
   return (
@@ -179,14 +49,16 @@ export const About: React.FC = () => {
       <div className="absolute bottom-10 right-10 w-96 h-96 bg-[#ffaa00]/5 rounded-full blur-[130px] pointer-events-none" />
 
       {/* Hero Header */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-12 sm:mb-20 space-y-4">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12 sm:mb-20 space-y-4">
         <motion.h1
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-4xl sm:text-5xl font-extrabold text-white font-heading tracking-tight"
+          className="text-4xl sm:text-5xl lg:text-6xl font-bold font-poppins uppercase text-left w-full block whitespace-pre-wrap break-words"
         >
-          <ScrollText text="About Us" />
+          <span className="bg-gradient-to-b from-[#190a2b] to-[#d6aeff] bg-clip-text text-transparent inline-block pb-1">
+            About Us
+          </span>
         </motion.h1>
         
         <motion.p
@@ -205,15 +77,14 @@ export const About: React.FC = () => {
 
       {/* Mission, Vision, and Objectives Cards */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12 sm:mb-24">
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-8"
-        >
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Mission */}
-          <motion.div variants={cardVariants}>
+          <motion.div 
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.5, delay: 0.0, ease: "easeOut" }}
+          >
             <MagicBentoCard className="glass p-8 rounded-2xl border border-white/5 flex flex-col justify-between shadow-xl h-full">
               <div className="space-y-4">
                 <div className="w-12 h-12 rounded-xl bg-[#ffaa00]/10 flex items-center justify-center text-[#ffaa00]">
@@ -228,7 +99,12 @@ export const About: React.FC = () => {
           </motion.div>
 
           {/* Vision */}
-          <motion.div variants={cardVariants}>
+          <motion.div 
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
+          >
             <MagicBentoCard className="glass p-8 rounded-2xl border border-white/5 flex flex-col justify-between shadow-xl h-full">
               <div className="space-y-4">
                 <div className="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center text-cyan-400">
@@ -243,7 +119,12 @@ export const About: React.FC = () => {
           </motion.div>
 
           {/* Objectives */}
-          <motion.div variants={cardVariants}>
+          <motion.div 
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.5, delay: 0.4, ease: "easeOut" }}
+          >
             <MagicBentoCard className="glass p-8 rounded-2xl border border-white/5 flex flex-col justify-between shadow-xl h-full">
               <div className="space-y-4">
                 <div className="w-12 h-12 rounded-xl bg-[#00f5ff]/10 flex items-center justify-center text-[#00f5ff]">
@@ -267,52 +148,11 @@ export const About: React.FC = () => {
               </div>
             </MagicBentoCard>
           </motion.div>
-        </motion.div>
-      </section>
-
-      {/* Benefits Section */}
-      <section className="py-12 sm:py-20 relative bg-[#060814]/45 border-y border-white/5">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div 
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center max-w-3xl mx-auto mb-16 space-y-3"
-          >
-            <h2 className="text-3xl font-bold text-white font-heading">
-              <ScrollText text="Why Join the GNU Builder Hub?" />
-            </h2>
-            <p className="text-slate-400 font-sans">
-              <ScrollText
-                text=""
-                stagger={0.01}
-              />
-            </p>
-          </motion.div>
-
-          <div className="relative max-w-5xl mx-auto md:pl-0 mt-16">
-            <div className="relative">
-              {BENEFITS.map((benefit, idx) => {
-                const isEven = idx % 2 === 0;
-                const isLast = idx === BENEFITS.length - 1;
-                return (
-                  <BenefitTimelineItem 
-                    key={idx}
-                    benefit={benefit}
-                    idx={idx}
-                    isEven={isEven}
-                    isLast={isLast}
-                  />
-                );
-              })}
-            </div>
-          </div>
         </div>
       </section>
 
-
-
+      {/* WHY JOIN AWS SBG GUNI */}
+      <CircuitBentoGrid />
 
     </div>
   );

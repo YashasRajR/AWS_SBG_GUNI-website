@@ -73,8 +73,8 @@ export function StatsCard({
   return (
     <motion.a
       href={link}
-      target="_blank"
-      rel="noopener noreferrer"
+      
+      
       ref={containerRef}
       initial={{ opacity: 0, y: 30 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}

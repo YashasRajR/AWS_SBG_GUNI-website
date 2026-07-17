@@ -137,8 +137,8 @@ export const TeamCard: React.FC<TeamCardProps> = ({ member }) => {
           <div className="custom-kpi-action-area z-10 pb-6 mt-auto">
             <a
               href={member.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
+              
+              
               onClick={(e) => e.stopPropagation()}
               className="custom-kpi-linkedin-btn"
               aria-label={`${member.name}'s LinkedIn Profile`}
@@ -180,8 +180,8 @@ export const TeamCard: React.FC<TeamCardProps> = ({ member }) => {
           <div className="flex justify-center items-center z-10 pb-6 shrink-0">
             <a
               href={member.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
+              
+              
               onClick={(e) => e.stopPropagation()}
               className="custom-kpi-linkedin-btn"
               aria-label={`${member.name}'s LinkedIn Profile`}

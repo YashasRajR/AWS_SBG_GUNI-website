@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
@@ -22,14 +22,25 @@ export const EventDetail: React.FC<EventDetailProps> = ({ event }) => {
     year: '3rd Year'
   });
 
+  // Scroll to the top of the event detail section when it loads
+  useEffect(() => {
+    const el = document.getElementById('events');
+    if (el) {
+      window.scrollTo({
+        top: el.offsetTop - 80, // account for navbar height
+        behavior: 'smooth'
+      });
+    }
+  }, []);
+
   if (!event) {
     return (
       <div className="pt-28 pb-16 font-sans text-center max-w-xl mx-auto space-y-6">
         <ShieldAlert className="w-16 h-16 text-red-500 mx-auto" />
         <h2 className="text-2xl font-bold text-white font-heading">Event Node Not Found</h2>
         <p className="text-slate-400">The event node requested could not be resolved in the AWS GUNI space data matrix.</p>
-        <Link to="/" className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#a855f7] text-white font-bold uppercase text-xs rounded-full hover:bg-purple-600 transition-colors shadow-lg shadow-[#a855f7]/75">
-          <ArrowLeft className="w-4 h-4" /> Back to Orbit Events
+        <Link to="/" className="px-8 min-h-[48px] flex items-center justify-center rounded-full font-bold uppercase tracking-wider text-sm text-white bg-white/5 border border-white/10 hover:border-[#a855f7] hover:text-[#a855f7] hover:bg-white/10 transition-all gap-2 active:scale-95">
+          <ArrowLeft className="w-4 h-4" /> Back to Events
         </Link>
       </div>
     );
@@ -55,7 +66,7 @@ export const EventDetail: React.FC<EventDetailProps> = ({ event }) => {
           to="/" 
           className="inline-flex items-center gap-2 text-sm text-slate-400 hover:text-[#a855f7] transition-colors uppercase tracking-wider font-semibold"
         >
-          <ArrowLeft className="w-4 h-4" /> Back to Orbit list
+          <ArrowLeft className="w-4 h-4" /> Back to list
         </Link>
       </div>
 
@@ -154,8 +165,8 @@ export const EventDetail: React.FC<EventDetailProps> = ({ event }) => {
                       {linkedin && (
                         <a
                           href={linkedin}
-                          target="_blank"
-                          rel="noopener noreferrer"
+                          
+                          
                           className="p-2 rounded-lg border border-white/10 hover:border-[#a855f7] hover:text-[#a855f7] text-slate-400 bg-white/5 hover:bg-[#a855f7]/10 transition-all duration-300"
                         >
                           <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -222,9 +233,9 @@ export const EventDetail: React.FC<EventDetailProps> = ({ event }) => {
 
                   <a
                     href={event.registrationUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-full h-12 rounded-full text-black bg-[#ffaa00] hover:bg-amber-400 font-bold uppercase tracking-wider text-xs transition-all flex items-center justify-center gap-2 cursor-pointer shadow-md shadow-[#ffaa00]/25 active:scale-95"
+                    
+                    
+                    className="w-full px-8 min-h-[48px] flex items-center justify-center rounded-full font-bold uppercase tracking-wider text-sm text-white bg-white/5 border border-white/10 hover:border-[#a855f7] hover:text-[#a855f7] hover:bg-white/10 transition-all gap-2 active:scale-95"
                   >
                     RSVP on Meetup
                   </a>
@@ -362,8 +373,8 @@ export const EventDetail: React.FC<EventDetailProps> = ({ event }) => {
                 <div className="pt-2 space-y-2">
                   <a
                     href="https://github.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    
+                    
                     className="w-full flex items-center justify-center h-12 border border-white/10 hover:border-[#a855f7] text-slate-300 hover:text-white rounded-full text-xs uppercase tracking-wider transition-all active:scale-95"
                   >
                     Access Cloud Resources

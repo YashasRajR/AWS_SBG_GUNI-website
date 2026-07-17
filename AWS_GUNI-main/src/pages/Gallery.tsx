@@ -1,6 +1,6 @@
 /*
 =========================================================================
-SECTION: Gallery (Static Grid, Lightbox)
+SECTION: Gallery (Static Grid, Lightbox) -> Converted to Dual Marquee
 Edit the text/images below. Do not change the tags/classes.
 =========================================================================
 */
@@ -87,9 +87,6 @@ const GalleryCard: React.FC<GalleryCardProps> = ({
 
         {/* Slide-up details overlay on hover */}
         <div className="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black via-black/95 to-transparent translate-y-[85%] group-hover:translate-y-0 transition-transform duration-300 z-10 flex flex-col justify-end min-h-[50%]">
-          <span className="text-[9px] font-mono text-[#a855f7] uppercase tracking-wider mb-1 block">
-            {item.category}
-          </span>
           <h4 className="text-white font-bold text-xs sm:text-sm font-heading leading-snug line-clamp-2">
             {item.title}
           </h4>
@@ -105,26 +102,33 @@ const GalleryCard: React.FC<GalleryCardProps> = ({
 export const Gallery: React.FC = () => {
   const [lightboxItem, setLightboxItem] = useState<GalleryItem | null>(null);
 
-  const filteredItems = GALLERY_ITEMS;
+  // Shuffle and split items
+  const shuffledItems = React.useMemo(() => {
+    return [...GALLERY_ITEMS].sort(() => 0.5 - Math.random());
+  }, []);
+
+  const half = Math.ceil(shuffledItems.length / 2);
+  const row1Items = shuffledItems.slice(0, half);
+  const row2Items = shuffledItems.slice(half);
 
   // Navigation helpers for Lightbox slider
   const handlePrev = () => {
     if (!lightboxItem) return;
-    const currentIndex = filteredItems.findIndex(i => i.id === lightboxItem.id);
+    const currentIndex = GALLERY_ITEMS.findIndex(i => i.id === lightboxItem.id);
     if (currentIndex > 0) {
-      setLightboxItem(filteredItems[currentIndex - 1]);
+      setLightboxItem(GALLERY_ITEMS[currentIndex - 1]);
     } else {
-      setLightboxItem(filteredItems[filteredItems.length - 1]);
+      setLightboxItem(GALLERY_ITEMS[GALLERY_ITEMS.length - 1]);
     }
   };
 
   const handleNext = () => {
     if (!lightboxItem) return;
-    const currentIndex = filteredItems.findIndex(i => i.id === lightboxItem.id);
-    if (currentIndex < filteredItems.length - 1) {
-      setLightboxItem(filteredItems[currentIndex + 1]);
+    const currentIndex = GALLERY_ITEMS.findIndex(i => i.id === lightboxItem.id);
+    if (currentIndex < GALLERY_ITEMS.length - 1) {
+      setLightboxItem(GALLERY_ITEMS[currentIndex + 1]);
     } else {
-      setLightboxItem(filteredItems[0]);
+      setLightboxItem(GALLERY_ITEMS[0]);
     }
   };
 
@@ -135,18 +139,22 @@ export const Gallery: React.FC = () => {
       <div className="absolute bottom-1/4 right-1/10 w-96 h-96 bg-[#d946ef]/5 rounded-full blur-[140px] pointer-events-none" />
 
       {/* Central heading */}
-      <div className="flex flex-col items-center justify-center text-center px-4 mb-16 z-20 w-full relative">
-        <span className="text-[10px] sm:text-xs font-mono text-[#a855f7] uppercase tracking-widest mb-2 opacity-80">
-          AWS SBG Ganpat University
-        </span>
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white font-heading tracking-tight max-w-sm sm:max-w-md md:max-w-2xl leading-tight uppercase">
-          CAPTURING THE JOURNEY
-        </h2>
-      </div>
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 sm:mb-24 mt-32 relative z-10">
+        <motion.h1
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-4xl sm:text-5xl lg:text-6xl font-bold font-poppins uppercase text-left w-full block whitespace-pre-wrap break-words"
+        >
+          <span className="bg-gradient-to-b from-[#190a2b] to-[#d6aeff] bg-clip-text text-transparent inline-block pb-1">
+            CAPTURING THE JOURNEY
+          </span>
+        </motion.h1>
+      </section>
 
-      {/* Responsive Grid */}
-      <div className="relative z-10 w-full max-w-6xl mx-auto px-4">
-        {filteredItems.length === 0 ? (
+      {/* Dual Marquee Gallery */}
+      <div className="relative z-10 w-full flex flex-col gap-6 sm:gap-8 group/marquee mt-10">
+        {GALLERY_ITEMS.length === 0 ? (
           <div className="text-center py-20 bg-black border border-white/5 rounded-2xl max-w-md mx-auto space-y-4">
             <h3 className="text-lg font-bold text-white font-heading">No Media Located</h3>
             <p className="text-xs text-slate-400 font-sans">
@@ -154,33 +162,38 @@ export const Gallery: React.FC = () => {
             </p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-            {filteredItems.map((item, index) => (
-              <motion.div
-                key={item.id}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.05 }}
-                transition={{ duration: 0.6, delay: (index % 3) * 0.1, ease: "easeOut" }}
-              >
-                <GalleryCard
-                  item={item}
-                  onClick={() => setLightboxItem(item)}
-                />
-              </motion.div>
-            ))}
-          </div>
+          <>
+            {/* ROW 1: Left to Right */}
+            <div className="flex overflow-hidden">
+              <div className="animate-marquee gap-6 flex">
+                {[...row1Items, ...row1Items, ...row1Items, ...row1Items, ...row1Items, ...row1Items].map((item, index) => (
+                  <div key={`r1-${index}`} className="w-[280px] sm:w-[340px] md:w-[400px] flex-shrink-0">
+                    <GalleryCard item={item} onClick={() => setLightboxItem(item)} />
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* ROW 2: Right to Left */}
+            <div className="flex overflow-hidden">
+              <div className="animate-marquee-reverse gap-6 flex">
+                {[...row2Items, ...row2Items, ...row2Items, ...row2Items, ...row2Items, ...row2Items].map((item, index) => (
+                  <div key={`r2-${index}`} className="w-[280px] sm:w-[340px] md:w-[400px] flex-shrink-0">
+                    <GalleryCard item={item} onClick={() => setLightboxItem(item)} />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </>
         )}
       </div>
 
-      {/* Lightbox Modal overlay */}
       <Lightbox
         item={lightboxItem}
         onClose={() => setLightboxItem(null)}
-        onPrev={handlePrev}
         onNext={handleNext}
+        onPrev={handlePrev}
       />
     </div>
   );
 };
-

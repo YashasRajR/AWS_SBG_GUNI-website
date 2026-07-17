@@ -23,7 +23,7 @@ export const Navbar: React.FC = () => {
 
   // IntersectionObserver Scroll Spy to auto-highlight navbar links
   useEffect(() => {
-    const sections = ['home', 'about', 'team', 'events', 'gallery', 'contact'];
+    const sections = ['home', 'about', 'events', 'gallery', 'team', 'contact'];
     
     const observerOptions = {
       root: null,
@@ -69,9 +69,9 @@ export const Navbar: React.FC = () => {
   const navLinks = [
     { name: 'Home', path: '#home', id: 'home' },
     { name: 'About Us', path: '#about', id: 'about' },
-    { name: 'Team', path: '#team', id: 'team' },
     { name: 'Events', path: '#events', id: 'events' },
     { name: 'Gallery', path: '#gallery', id: 'gallery' },
+    { name: 'Team', path: '#team', id: 'team' },
     { name: 'Contact', path: '#contact', id: 'contact' },
   ];
 
@@ -86,28 +86,23 @@ export const Navbar: React.FC = () => {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 xl:px-12">
           <div className="flex items-center justify-between">
-            {/* Logo Brand (Hidden initially on Home page, appears on scroll. Not rendered on other pages) */}
-            <Link 
-              to="/" 
-              className={`flex items-center gap-3 group transition-all duration-500 transform ${
-                !scrolled && !isOpen 
-                  ? 'opacity-0 -translate-x-4 pointer-events-none' 
-                  : 'opacity-100 translate-x-0 pointer-events-auto'
-              }`}
+            {/* Logo Brand (Always visible) */}
+            <a 
+              href="#home" 
+              className="flex items-center gap-3 group transition-all duration-500 transform opacity-100 translate-x-0 pointer-events-auto"
             >
               <Logo size={32} className="group-hover:scale-110 transition-transform duration-300 shrink-0" />
 
-              <div className="hidden sm:flex flex-col border-r border-white/20 pr-4 shrink-0">
+              <div className="flex flex-col border-r border-white/20 pr-3 sm:pr-4 shrink-0">
                 <span className="text-white font-bold text-sm md:text-base font-heading tracking-wide group-hover:text-[#a855f7] transition-colors duration-300">
-                  AWS Student Builder Group
+                  <span className="hidden sm:inline">AWS Student Builder Group</span>
+                  <span className="sm:hidden text-lg">AWS SBG</span>
                 </span>
-                <span className="text-[10px] text-purple-400 font-mono tracking-widest uppercase">
+                <span className="hidden sm:block text-[10px] text-purple-400 font-mono tracking-widest uppercase">
                   Ganpat University
                 </span>
               </div>
-              
-              <img src="/guni-logo.png" alt="Ganpat University" className="h-8 md:h-10 object-contain ml-2 shrink-0 hidden sm:block" />
-            </Link>
+            </a>
 
             {/* Desktop Navigation */}
             <div className={`hidden lg:flex items-center transition-all duration-500 gap-10`}>
@@ -139,8 +134,8 @@ export const Navbar: React.FC = () => {
               {/* Action Button */}
               <a
                 href="https://www.meetup.com/aws-sbg-at-ganpat-university/"
-                target="_blank"
-                rel="noopener noreferrer"
+                
+                
                 className="inline-flex items-center px-6 py-2.5 text-xs font-bold uppercase tracking-wider text-white bg-[#a855f7] hover:bg-purple-600 rounded-full shadow-lg shadow-[#a855f7]/25 hover:shadow-[#a855f7]/45 transition-all duration-300 transform hover:-translate-y-0.5"
               >
                 Join Hub
@@ -232,8 +227,8 @@ export const Navbar: React.FC = () => {
               >
                 <a
                   href="https://www.meetup.com/aws-sbg-at-ganpat-university/"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  
+                  
                   className="flex items-center justify-center w-full min-h-[48px] px-6 text-sm font-bold uppercase tracking-wider text-white bg-[#a855f7] hover:bg-purple-600 rounded-full shadow-lg shadow-[#a855f7]/25 transition-colors"
                 >
                   Join Community Hub

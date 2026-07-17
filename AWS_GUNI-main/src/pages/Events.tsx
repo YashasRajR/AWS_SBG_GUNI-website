@@ -39,9 +39,11 @@ export const Events: React.FC = () => {
       <div className="absolute bottom-10 left-10 w-96 h-96 bg-[#d946ef]/5 rounded-full blur-[130px] pointer-events-none" />
 
       {/* Header */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-16 space-y-4">
-        <h1 className="text-3xl sm:text-5xl font-extrabold text-white font-heading tracking-tight">
-          EVENT CALENDAR
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-left mb-16 space-y-4 relative z-10">
+        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold font-poppins uppercase text-left w-full block whitespace-pre-wrap break-words">
+          <span className="bg-gradient-to-b from-[#190a2b] to-[#d6aeff] bg-clip-text text-transparent inline-block pb-1">
+            EVENT CALENDAR
+          </span>
         </h1>
         <p className="max-w-2xl mx-auto text-slate-400 text-sm sm:text-base">
         </p>
@@ -72,12 +74,17 @@ export const Events: React.FC = () => {
       {/* Events Grid */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {filteredEvents.length === 0 ? (
-          <div className="text-center py-20 glass border border-white/5 rounded-2xl max-w-xl mx-auto space-y-4">
-            <Compass className="w-12 h-12 text-[#ff9900] mx-auto animate-spin-slow" />
-            <h3 className="text-xl font-bold text-white font-heading">No Orbit Events Located</h3>
-            <p className="text-sm text-slate-400">
-              There are no current events matching your filter metrics. Try adjusting filters or check back later!
+          <div className="text-center py-20 glass border border-white/5 rounded-2xl max-w-xl mx-auto space-y-4 px-4 flex flex-col items-center justify-center">
+            <h3 className="text-2xl font-bold text-white font-heading">No Events Found</h3>
+            <p className="text-sm text-slate-400 max-w-md">
+              Join meetup to stay connected
             </p>
+            <a
+              href="https://www.meetup.com/aws-sbg-at-ganpat-university/"
+              className="mt-4 px-8 min-h-[48px] flex items-center justify-center rounded-full font-bold uppercase tracking-wider text-sm text-white bg-white/5 border border-white/10 hover:border-[#a855f7] hover:text-[#a855f7] hover:bg-white/10 transition-all gap-2 active:scale-95"
+            >
+              Join Meetup
+            </a>
           </div>
         ) : (
           <motion.div 
@@ -166,9 +173,9 @@ export const Events: React.FC = () => {
                         
                         <Link
                           to={`/events?id=${event.id}`}
-                          className="w-full flex justify-center items-center px-4 min-h-[48px] text-xs font-bold uppercase tracking-wider text-black bg-white group-hover:bg-[#a855f7] group-hover:text-white rounded-full transition-colors gap-2 shrink-0 cursor-pointer active:scale-95"
+                          className="w-full flex justify-center items-center px-4 min-h-[48px] rounded-full font-bold uppercase tracking-wider text-sm text-white bg-white/5 border border-white/10 hover:border-[#a855f7] hover:text-[#a855f7] hover:bg-white/10 transition-all gap-2 shrink-0 cursor-pointer active:scale-95"
                         >
-                          Inspect
+                          Details
                           <ChevronRight className="w-4 h-4" />
                         </Link>
                       </div>

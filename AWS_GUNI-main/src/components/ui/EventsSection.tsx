@@ -290,8 +290,8 @@ const EmptyStateCard: React.FC = () => {
       <div className="pt-2">
         <motion.a
           href="https://www.meetup.com/aws-sbg-at-ganpat-university/"
-          target="_blank"
-          rel="noopener noreferrer"
+          
+          
           className="inline-flex items-center gap-2.5 px-6 py-3 rounded-xl font-bold uppercase tracking-wider text-xs text-black bg-[#ffaa00] hover:bg-amber-400 shadow-md shadow-[#ffaa00]/25 transition-all duration-300 cursor-pointer font-sans group relative overflow-hidden"
           whileHover={{ 
             y: -3, 

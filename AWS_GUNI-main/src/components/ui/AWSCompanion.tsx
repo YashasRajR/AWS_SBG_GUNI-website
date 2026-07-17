@@ -24,7 +24,7 @@ const COMPANION_QUOTES = [
 ];
 
 // Cloud/Tech symbols for rising effect on click
-const CLOUD_SYMBOLS = ["☁️", "⚡", "⚙️", "💻", "🔒", "λ", "AWS"];
+const CLOUD_SYMBOLS = ["️", "", "️", "", "", "λ", "AWS"];
 
 interface Note {
   id: number;

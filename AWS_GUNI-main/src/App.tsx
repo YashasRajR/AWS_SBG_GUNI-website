@@ -4,13 +4,14 @@ To edit text or images, find the matching SECTION comment below.
 */
 
 import React, { useEffect } from 'react';
-import { BrowserRouter, useLocation } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 // Layout and Common UI Components
 import { Navbar } from './components/layout/Navbar';
 import { Footer } from './components/layout/Footer';
 import { SonarClickEffect } from './components/ui/SonarClickEffect';
+import { BackToTop } from './components/ui/BackToTop';
 
 // Pages
 import { Home } from './pages/Home';
@@ -19,6 +20,7 @@ import { Team } from './pages/Team';
 import { Events } from './pages/Events';
 import { Gallery } from './pages/Gallery';
 import { Contact } from './pages/Contact';
+import { NotFound } from './pages/NotFound';
 
 // Scroll Restoration helper
 const ScrollToTop: React.FC = () => {
@@ -61,15 +63,6 @@ const AppContent: React.FC = () => {
         </section>
 
         {/* ============================== */}
-        {/* SECTION: Team                  */}
-        {/* Edit the text/images below.    */}
-        {/* Do not change the tags/classes.*/}
-        {/* ============================== */}
-        <section id="team">
-          <Team />
-        </section>
-
-        {/* ============================== */}
         {/* SECTION: Events                */}
         {/* Edit the text/images below.    */}
         {/* Do not change the tags/classes.*/}
@@ -88,6 +81,15 @@ const AppContent: React.FC = () => {
         </section>
 
         {/* ============================== */}
+        {/* SECTION: Team                  */}
+        {/* Edit the text/images below.    */}
+        {/* Do not change the tags/classes.*/}
+        {/* ============================== */}
+        <section id="team">
+          <Team />
+        </section>
+
+        {/* ============================== */}
         {/* SECTION: Contact               */}
         {/* Edit the text/images below.    */}
         {/* Do not change the tags/classes.*/}
@@ -96,6 +98,9 @@ const AppContent: React.FC = () => {
           <Contact />
         </section>
       </main>
+
+      {/* Floating Back to Top Button */}
+      <BackToTop />
 
       {/* Universal Footer */}
       <Footer />
@@ -116,7 +121,19 @@ export const App: React.FC = () => {
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }} // easeOutExpo
         className="min-h-screen"
       >
-        <AppContent />
+        <Routes>
+          <Route path="/" element={<AppContent />} />
+          <Route path="*" element={
+            <div className="flex flex-col min-h-screen relative text-slate-100 selection:bg-[#ff9900]/30 selection:text-[#ff9900] w-full max-w-[100vw] overflow-x-hidden">
+              <SonarClickEffect />
+              <Navbar />
+              <main className="flex-1 flex flex-col relative z-10 w-full pt-20">
+                <NotFound />
+              </main>
+              <Footer />
+            </div>
+          } />
+        </Routes>
       </motion.div>
     </BrowserRouter>
   );
