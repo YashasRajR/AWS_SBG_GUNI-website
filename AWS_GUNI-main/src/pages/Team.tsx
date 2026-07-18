@@ -7,7 +7,6 @@ Edit the text/images below. Do not change the tags/classes.
 
 import React from 'react';
 import { TeamCard } from '../components/ui/TeamCard';
-import { TypewriterText } from '../components/ui/TypewriterText';
 
 interface TeamMember {
   id: string;

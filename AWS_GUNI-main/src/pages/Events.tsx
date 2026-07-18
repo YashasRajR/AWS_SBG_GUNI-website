@@ -9,7 +9,7 @@ import React, { useState } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
-  Calendar, MapPin, Tag, Compass, ChevronRight, Hourglass, PlayCircle
+  Calendar, MapPin, Tag, ChevronRight, Hourglass, PlayCircle
 } from 'lucide-react';
 import { EVENTS } from '../data/mockData';
 import { EventDetail } from './EventDetail';

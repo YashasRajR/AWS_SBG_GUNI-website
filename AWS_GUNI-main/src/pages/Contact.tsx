@@ -11,7 +11,7 @@ Edit the text/images below. Do not change the tags/classes.
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
-  Mail, Phone, MapPin, Send, CheckCircle 
+  Send, CheckCircle 
 } from 'lucide-react';
 import { FaqSection } from '../components/ui/FaqSection';
 

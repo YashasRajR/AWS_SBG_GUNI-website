@@ -6,19 +6,16 @@ Edit the text/images below. Do not change the tags/classes.
 */
 
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 import { motion } from 'framer-motion';
 import { 
-  ArrowRight, Users, Calendar, ChevronRight, MessageSquare, MapPin 
+  ArrowRight 
 } from 'lucide-react';
-import { EVENTS } from '../data/mockData';
 import { Logo } from '../components/ui/Logo';
 import TextType from '../components/ui/TextType';
 import { useMeetupData } from '../utils/meetup';
 import { useLinkedinData } from '../utils/linkedin';
 import ShapeGrid from '../components/ui/ShapeGrid';
-import { EventsSection } from '../components/ui/EventsSection';
 import { ScrollText } from '../components/ui/ScrollReveal';
 import { StatsCard } from '../components/ui/StatsCard';
 import { LinkedinIcon, MeetupIcon } from '../components/ui/SocialIcons';
@@ -38,23 +35,15 @@ const MARQUEE_ITEMS = [
 
 // Typewriter effect custom hook
 export const Home: React.FC = () => {
-  const { memberCount, pastEvents, upcomingEvents: liveUpcomingEvents, isLive } = useMeetupData();
+  const { memberCount, isLive } = useMeetupData();
   const { followerCount, isLive: isLinkedinLive } = useLinkedinData();
 
 
   // Merge live attendee/rsvp count into static EVENTS data
-  const mergedEvents = EVENTS.map(e => {
-    const meetupId = e.id === 'event-1' ? '314906294' : (e.id === 'event-2' ? '313855270' : (e.id === 'event-upcoming-1' ? '315424216' : null));
-    const liveEvent = [...(pastEvents || []), ...(liveUpcomingEvents || [])].find((pe: any) => pe.id === meetupId);
-    return {
-      ...e,
-      attendeeCount: liveEvent ? liveEvent.going : (e.id === 'event-1' ? 221 : e.id === 'event-2' ? 675 : (e.id === 'event-upcoming-1' ? 232 : 0))
-    };
-  });
+  // (Omitted mergedEvents because it is unused)
 
-  const upcomingEvents = mergedEvents.filter(e => e.status === 'upcoming' || e.status === 'ongoing').slice(0, 2);
-  const pastEventsList = mergedEvents.filter(e => e.status === 'past').slice(0, 2);
 
+    
   return (
     <div className="relative pt-16 font-sans">
       {/* 1. HERO SECTION */}

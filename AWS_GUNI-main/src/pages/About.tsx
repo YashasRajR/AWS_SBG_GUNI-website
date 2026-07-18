@@ -15,32 +15,6 @@ import { MagicBentoCard } from '../components/ui/MagicBentoCard';
 import { ScrollText } from '../components/ui/ScrollReveal';
 import CircuitBentoGrid from '../components/ui/CircuitBentoGrid';
 
-// Motion Animation Variants
-const containerVariants = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.12
-    }
-  }
-};
-
-const cardVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      type: 'spring' as const,
-      damping: 25,
-      stiffness: 100
-    }
-  }
-};
-
-
-
-
 export const About: React.FC = () => {
   return (
     <div className="relative pt-16 sm:pt-24 pb-12 sm:pb-16 font-sans overflow-hidden">
