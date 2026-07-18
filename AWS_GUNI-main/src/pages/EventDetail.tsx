@@ -13,6 +13,7 @@ interface EventDetailProps {
 }
 
 export const EventDetail: React.FC<EventDetailProps> = ({ event }) => {
+  const [ticketId] = useState(() => (Math.random() * 89999 + 10000).toFixed(0));
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [formData, setFormData] = useState({
     fullName: '',
