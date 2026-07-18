@@ -103,9 +103,7 @@ export const Gallery: React.FC = () => {
   const [lightboxItem, setLightboxItem] = useState<GalleryItem | null>(null);
 
   // Shuffle and split items
-  const shuffledItems = React.useMemo(() => {
-    return [...GALLERY_ITEMS].sort(() => 0.5 - Math.random());
-  }, []);
+  const [shuffledItems] = React.useState(() => [...GALLERY_ITEMS].sort(() => 0.5 - Math.random()));
 
   const half = Math.ceil(shuffledItems.length / 2);
   const row1Items = shuffledItems.slice(0, half);

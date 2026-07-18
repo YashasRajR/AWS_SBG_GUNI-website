@@ -349,7 +349,7 @@ export const EventDetail: React.FC<EventDetailProps> = ({ event }) => {
                   </div>
                   
                   <div className="p-4 bg-emerald-500/5 border border-emerald-500/10 rounded-xl text-[11px] font-mono text-emerald-400 uppercase">
-                    GNU SBG Hub Ticket #{(Math.random() * 89999 + 10000).toFixed(0)}
+                    GNU SBG Hub Ticket #{ticketId}
                   </div>
                   
                   <Link

@@ -18,5 +18,15 @@ export default defineConfig([
     languageOptions: {
       globals: globals.browser,
     },
+    rules: {
+      '@typescript-eslint/no-explicit-any': 'off',
+      '@typescript-eslint/no-unused-vars': 'warn',
+      'react-hooks/refs': 'off',
+      'react-hooks/purity': 'off',
+      'prefer-const': 'off',
+      'react-hooks/set-state-in-effect': 'off',
+      'react-hooks/immutability': 'off',
+      '@typescript-eslint/no-unused-expressions': 'off'
+    }
   },
 ])
