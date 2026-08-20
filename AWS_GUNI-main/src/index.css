@@ -268,7 +268,7 @@ input:focus, textarea:focus, select:focus {
 .animate-marquee {
   display: flex;
   width: max-content;
-  animation: marquee 35s linear infinite;
+  animation: marquee 50s linear infinite;
 }
 
 .group\/marquee:hover .animate-marquee {
@@ -387,7 +387,7 @@ input:focus, textarea:focus, select:focus {
 .animate-marquee-reverse {
   display: flex;
   width: max-content;
-  animation: marquee 35s linear infinite reverse;
+  animation: marquee 50s linear infinite reverse;
 }
 
 .group\\/marquee:hover .animate-marquee-reverse {
