@@ -43,7 +43,7 @@ async function generateHTML() {
   // Removing Navbar class (often fixed top-0)
   $('*').each((_, el) => {
     const cls = $(el).attr('class') || '';
-    if (cls.includes('fixed') && cls.includes('top-0') && cls.includes('z-[100]')) {
+    if (cls.includes('fixed') && cls.includes('top-0') && cls.includes('z-50')) {
       $(el).remove();
     }
   });
@@ -90,6 +90,8 @@ async function generateHTML() {
   // Pre-process CSS to remove global tags
   cssContent = cssContent.replace(/body\s*\{/g, '.body-wrap {');
   cssContent = cssContent.replace(/html\s*\{/g, '.html-wrap {');
+  // Add smooth scrolling
+  cssContent += `\nhtml { scroll-behavior: smooth; }\n`;
 
   // Custom Vanilla JS for Interactions
   const vanillaJS = `
@@ -135,6 +137,17 @@ async function generateHTML() {
       }, { threshold: 0.1 });
       
       document.querySelectorAll('[style*="opacity: 0"]').forEach(el => observer.observe(el));
+      // Smooth scroll for internal links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const targetId = this.getAttribute('href').substring(1);
+          const targetEl = document.getElementById(targetId);
+          if (targetEl) {
+            targetEl.scrollIntoView({ behavior: 'smooth' });
+          }
+        });
+      });
     });
   `;
 
