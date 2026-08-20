@@ -151,7 +151,7 @@ export const Gallery: React.FC = () => {
       </section>
 
       {/* Dual Marquee Gallery */}
-      <div className="relative z-10 w-full flex flex-col gap-6 sm:gap-8 group/marquee mt-10">
+      <div className="relative z-10 w-full flex flex-col gap-6 sm:gap-8 mt-10">
         {GALLERY_ITEMS.length === 0 ? (
           <div className="text-center py-20 bg-black border border-white/5 rounded-2xl max-w-md mx-auto space-y-4">
             <h3 className="text-lg font-bold text-white font-heading">No Media Located</h3>
@@ -163,7 +163,7 @@ export const Gallery: React.FC = () => {
           <>
             {/* ROW 1: Left to Right */}
             <div className="flex overflow-hidden">
-              <div className="animate-marquee gap-6 flex">
+              <div className="animate-marquee hover:[animation-play-state:paused] gap-6 flex">
                 {[...row1Items, ...row1Items, ...row1Items, ...row1Items, ...row1Items, ...row1Items].map((item, index) => (
                   <div key={`r1-${index}`} className="w-[280px] sm:w-[340px] md:w-[400px] flex-shrink-0">
                     <GalleryCard item={item} onClick={() => setLightboxItem(item)} />
@@ -174,7 +174,7 @@ export const Gallery: React.FC = () => {
 
             {/* ROW 2: Right to Left */}
             <div className="flex overflow-hidden">
-              <div className="animate-marquee-reverse gap-6 flex">
+              <div className="animate-marquee-reverse hover:[animation-play-state:paused] gap-6 flex">
                 {[...row2Items, ...row2Items, ...row2Items, ...row2Items, ...row2Items, ...row2Items].map((item, index) => (
                   <div key={`r2-${index}`} className="w-[280px] sm:w-[340px] md:w-[400px] flex-shrink-0">
                     <GalleryCard item={item} onClick={() => setLightboxItem(item)} />
