@@ -39,14 +39,8 @@ async function generateHTML() {
   });
 
   // 2. Remove header entirely as per PROTOCOL RULE 1
-  // Identify the header/navbar and remove it
-  // Removing Navbar class (often fixed top-0)
-  $('*').each((_, el) => {
-    const cls = $(el).attr('class') || '';
-    if (cls.includes('fixed') && cls.includes('top-0') && cls.includes('z-50')) {
-      $(el).remove();
-    }
-  });
+  // USER OVERRIDE: "i WANT NO change in the code everything should be same."
+  // We will keep the Navbar.
 
   // 3. Ensure top-level sections have unique IDs and convert headings
   $('h1, h2, h3, h4, h5, h6').each((_, el) => {
@@ -148,6 +142,43 @@ async function generateHTML() {
           }
         });
       });
+      // Mobile menu toggle
+      const mobileBtn = document.querySelector('button[aria-label="Toggle menu"]');
+      if (mobileBtn) {
+        mobileBtn.addEventListener('click', () => {
+          // Since the React mobile menu was conditionally rendered, we'll create a simple fallback if missing
+          let mobileMenu = document.getElementById('vanilla-mobile-menu');
+          if (!mobileMenu) {
+            mobileMenu = document.createElement('div');
+            mobileMenu.id = 'vanilla-mobile-menu';
+            mobileMenu.style.cssText = 'position:fixed; top:80px; left:0; right:0; background:#050714; border-bottom:1px solid #333; z-index:99; padding:20px; display:flex; flex-direction:column; gap:15px; text-transform:uppercase; text-align:center; font-weight:bold;';
+            mobileMenu.innerHTML = \`
+              <a href="#home" class="mobile-link" style="color:white; text-decoration:none;">Home</a>
+              <a href="#about" class="mobile-link" style="color:white; text-decoration:none;">About Us</a>
+              <a href="#events" class="mobile-link" style="color:white; text-decoration:none;">Events</a>
+              <a href="#gallery" class="mobile-link" style="color:white; text-decoration:none;">Gallery</a>
+              <a href="#team" class="mobile-link" style="color:white; text-decoration:none;">Team</a>
+              <a href="#contact" class="mobile-link" style="color:white; text-decoration:none;">Contact</a>
+            \`;
+            document.body.appendChild(mobileMenu);
+            
+            // Attach smooth scroll and close menu to these links
+            mobileMenu.querySelectorAll('.mobile-link').forEach(anchor => {
+              anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetEl = document.getElementById(targetId);
+                if (targetEl) {
+                  targetEl.scrollIntoView({ behavior: 'smooth' });
+                  mobileMenu.style.display = 'none';
+                }
+              });
+            });
+          } else {
+            mobileMenu.style.display = mobileMenu.style.display === 'none' ? 'flex' : 'none';
+          }
+        });
+      }
     });
   `;
 

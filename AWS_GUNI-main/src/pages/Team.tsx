@@ -224,7 +224,7 @@ export const Team: React.FC = () => {
   const coordinator = {
     name: "Dr. Kiran Amin",
     designation: "Deputy Pro Vice Chancellor & Executive Dean FoET Principal (GUNI - UVPCE)",
-    role: "Mentor",
+    role: "Senior Mentor",
     tagline: "Academic Leadership & Excellence",
     profileImage: "/gallery/KiranAmin.png",
     linkedin: "#"

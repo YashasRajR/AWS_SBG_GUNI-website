@@ -241,7 +241,7 @@ export const Home: React.FC = () => {
               memberCount={memberCount}
               isLive={isLive}
               label="Registered Members"
-              link="https://www.meetup.com/aws-sbg-at-ganpat-university/"
+              link="https://www.meetup.com/aws-sbg-at-ganpat-university/members/"
               icon={<MeetupIcon className="w-6 h-6" />}
               themeColor="purple"
               subStats={[
