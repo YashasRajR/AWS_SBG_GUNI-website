@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <title>AWS Student Builder Group · Ganpat University</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <meta name="description" content="Official Portal for AWS Student Builder Group at Ganpat University." />
+
+  <!-- Google Fonts: Space Grotesk, Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ==========================================================================
+       BRIGHT GLASS-BRUTALISM - REFINED & UNIFIED (STRICT NO-SCROLL)
+       ========================================================================== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #f8f6ff;
+      --ink: #0f172a;
+      --purple: #7c3aed;
+      --purple-light: #a855f7;
+      --purple-soft: #ede9fe;
+      --amber: #f59e0b;
+      --emerald: #10b981;
+      --glass-bg: rgba(255, 255, 255, 0.78);
+      --glass-border: #0f172a;
+      --shadow-primary: #7c3aed;
+      --shadow-ink: #0f172a;
+      --font-display: 'Space Grotesk', -apple-system, sans-serif;
+      --font-body: 'Plus Jakarta Sans', -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      height: 100dvh;
+      max-height: 100dvh;
+      overflow: hidden; /* Strict guarantee: Zero scroll */
+      background-color: var(--bg);
+      color: var(--ink);
+      font-family: var(--font-body);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      position: fixed;
+      inset: 0;
+    }
+
+    /* Ambient Atmosphere with Soft Lighting & Grid */
+    .ambient-canvas {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .bg-grid {
+      position: absolute;
+      inset: 0;
+      background-image: 
+        linear-gradient(rgba(15, 23, 42, 0.05) 1.5px, transparent 1.5px),
+        linear-gradient(90deg, rgba(15, 23, 42, 0.05) 1.5px, transparent 1.5px);
+      background-size: 34px 34px;
+    }
+
+    .glow-sphere {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(50px);
+      opacity: 0.6;
+    }
+    .glow-purple {
+      width: min(600px, 65vw);
+      height: min(600px, 65vw);
+      top: -15%;
+      left: 10%;
+      background: radial-gradient(circle, #ddd6fe 0%, rgba(221, 214, 254, 0) 70%);
+    }
+    .glow-amber {
+      width: min(500px, 55vw);
+      height: min(500px, 55vw);
+      bottom: -15%;
+      right: 5%;
+      background: radial-gradient(circle, #fef08a 0%, rgba(254, 240, 138, 0) 70%);
+    }
+    .glow-cyan {
+      width: min(400px, 45vw);
+      height: min(400px, 45vh);
+      top: 30%;
+      right: -10%;
+      background: radial-gradient(circle, #bae6fd 0%, rgba(186, 230, 253, 0) 70%);
+    }
+
+    /* Floating Frosted Geometry */
+    .glass-token {
+      position: absolute;
+      border: 2px solid rgba(15, 23, 42, 0.12);
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.45);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 4px 4px 0 rgba(15, 23, 42, 0.06);
+    }
+    .token-1 {
+      width: 58px;
+      height: 58px;
+      top: 15%;
+      left: 5%;
+      transform: rotate(-10deg);
+    }
+    .token-2 {
+      width: 50px;
+      height: 50px;
+      bottom: 12%;
+      left: 6%;
+      transform: rotate(15deg);
+      border-radius: 50%;
+    }
+    .token-3 {
+      width: 70px;
+      height: 70px;
+      top: 25%;
+      right: 5%;
+      transform: rotate(8deg);
+    }
+
+    /* ==========================================================================
+       MAIN VIEWPORT CONTAINER
+       ========================================================================== */
+    .page-frame {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      padding: clamp(12px, 2.2vh, 26px) clamp(16px, 3.2vw, 36px);
+      max-width: 1060px;
+      margin: 0 auto;
+    }
+
+    /* ==========================================================================
+       UNIFIED CO-BRANDED NAVBAR (Clean, Balanced & Integrated)
+       ========================================================================== */
+    .top-navbar {
+      width: 100%;
+      background: var(--glass-bg);
+      backdrop-filter: blur(20px) saturate(160%);
+      -webkit-backdrop-filter: blur(20px) saturate(160%);
+      border: 3px solid var(--ink);
+      border-radius: clamp(14px, 2.2vw, 20px);
+      box-shadow: 5px 5px 0px var(--shadow-ink);
+      padding: clamp(10px, 1.6vh, 16px) clamp(16px, 2.5vw, 28px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .top-navbar:hover {
+      transform: translate(-1px, -1px);
+      box-shadow: 6px 6px 0px var(--shadow-ink);
+    }
+
+    .nav-brand-side {
+      display: flex;
+      align-items: center;
+      gap: clamp(10px, 1.6vw, 16px);
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .nav-sbg-logo {
+      width: clamp(32px, 4.5vh, 42px);
+      height: clamp(32px, 4.5vh, 42px);
+      color: var(--purple);
+      flex-shrink: 0;
+      transition: transform 0.25s ease;
+    }
+
+    .nav-brand-side:hover .nav-sbg-logo {
+      transform: scale(1.08) rotate(3deg);
+    }
+
+    .nav-title-group {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.18;
+    }
+
+    .nav-main-title {
+      font-family: var(--font-display);
+      font-size: clamp(0.95rem, 1.6vw, 1.25rem);
+      font-weight: 800;
+      letter-spacing: -0.015em;
+      color: var(--ink);
+    }
+
+    .nav-sub-title {
+      font-family: var(--font-mono);
+      font-size: clamp(0.68rem, 1.1vw, 0.82rem);
+      font-weight: 700;
+      color: var(--purple);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .nav-guni-side {
+      display: flex;
+      align-items: center;
+      gap: clamp(10px, 1.6vw, 16px);
+    }
+
+    .nav-divider {
+      width: 2px;
+      height: clamp(26px, 3.8vh, 36px);
+      background-color: rgba(15, 23, 42, 0.18);
+    }
+
+    .nav-guni-logo {
+      height: clamp(28px, 4.2vh, 40px);
+      width: auto;
+      object-fit: contain;
+      filter: brightness(0);
+      opacity: 0.95;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+
+    .nav-guni-logo:hover {
+      opacity: 1;
+      transform: scale(1.04);
+    }
+
+    /* ==========================================================================
+       CENTRAL GLASS-BRUTAL HERO CARD
+       ========================================================================== */
+    .center-stage {
+      width: 100%;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 0;
+      padding: clamp(6px, 1.2vh, 16px) 0;
+    }
+
+    .brutal-card {
+      width: 100%;
+      max-width: 630px;
+      background: var(--glass-bg);
+      backdrop-filter: blur(28px) saturate(180%);
+      -webkit-backdrop-filter: blur(28px) saturate(180%);
+      border: 3px solid var(--ink);
+      border-radius: clamp(18px, 2.4vw, 24px);
+      box-shadow: 
+        6px 6px 0px var(--shadow-primary),
+        12px 12px 0px var(--shadow-ink);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .brutal-card:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 
+        8px 8px 0px var(--shadow-primary),
+        15px 15px 0px var(--shadow-ink);
+    }
+
+    /* Top Strip / Window Control Header */
+    .card-top-strip {
+      width: 100%;
+      background: rgba(15, 23, 42, 0.04);
+      border-bottom: 2px solid var(--ink);
+      padding: clamp(7px, 1.1vh, 10px) clamp(14px, 2vw, 20px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .window-controls {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .w-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      border: 1.5px solid var(--ink);
+    }
+    .w-dot-red { background: #f87171; }
+    .w-dot-yellow { background: #facc15; }
+    .w-dot-green { background: #4ade80; }
+
+    .strip-meta {
+      font-family: var(--font-mono);
+      font-size: clamp(0.6rem, 0.9vw, 0.7rem);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink);
+    }
+
+    /* Card Content */
+    .card-body {
+      padding: clamp(20px, 3.2vh, 36px) clamp(18px, 3.2vw, 36px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .stamp-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #fef08a;
+      border: 2px solid var(--ink);
+      border-radius: 8px;
+      padding: 3px 12px;
+      font-family: var(--font-mono);
+      font-size: clamp(0.64rem, 1vw, 0.74rem);
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--ink);
+      box-shadow: 2px 2px 0 var(--shadow-ink);
+      margin-bottom: clamp(12px, 2vh, 18px);
+      transform: rotate(-1.5deg);
+    }
+
+    .card-hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.75rem, 4vw, 2.75rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      color: var(--ink);
+      margin-bottom: clamp(4px, 0.8vh, 8px);
+    }
+
+    .card-hero-sub {
+      display: inline-block;
+      font-family: var(--font-display);
+      font-size: clamp(0.92rem, 1.6vw, 1.2rem);
+      font-weight: 700;
+      color: var(--purple);
+      background: var(--purple-soft);
+      border: 1.5px solid var(--purple);
+      border-radius: 6px;
+      padding: 2px 10px;
+      letter-spacing: 0.02em;
+      margin-bottom: clamp(12px, 2vh, 18px);
+    }
+
+    .card-desc-text {
+      font-size: clamp(0.82rem, 1.35vw, 0.96rem);
+      color: #334155;
+      line-height: 1.55;
+      max-width: 480px;
+      font-weight: 500;
+      margin-bottom: clamp(22px, 3.6vh, 32px);
+    }
+
+    /* CTA Area */
+    .cta-column {
+      width: 100%;
+      max-width: 420px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .main-redirect-btn {
+      width: 100%;
+      min-height: clamp(48px, 6vh, 56px);
+      background: linear-gradient(135deg, #7c3aed 0%, #9333ea 100%);
+      color: #ffffff;
+      border: 2.5px solid var(--ink);
+      border-radius: 12px;
+      font-family: var(--font-display);
+      font-size: clamp(0.92rem, 1.6vw, 1.08rem);
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      text-decoration: none;
+      cursor: pointer;
+      box-shadow: 4px 4px 0px var(--shadow-ink);
+      transition: all 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+    }
+
+    .main-redirect-btn:hover {
+      transform: translate(2px, 2px);
+      box-shadow: 2px 2px 0px var(--shadow-ink);
+      background: linear-gradient(135deg, #6d28d9 0%, #7c3aed 100%);
+    }
+
+    .main-redirect-btn:active {
+      transform: translate(4px, 4px);
+      box-shadow: 0px 0px 0px var(--shadow-ink);
+    }
+
+    .arrow-icon {
+      width: 20px;
+      height: 20px;
+      transition: transform 0.2s ease;
+    }
+
+    .main-redirect-btn:hover .arrow-icon {
+      transform: translate(3px, -3px);
+    }
+
+    /* ==========================================================================
+       BOTTOM FOOTER
+       ========================================================================== */
+    .page-footer {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-shrink: 0;
+      gap: 10px;
+    }
+
+    .footer-copy {
+      font-family: var(--font-mono);
+      font-size: clamp(0.62rem, 0.95vw, 0.72rem);
+      font-weight: 600;
+      color: #64748b;
+    }
+
+    .footer-pill-row {
+      display: flex;
+      align-items: center;
+      gap: clamp(8px, 1.2vw, 12px);
+    }
+
+    .nav-pill-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--glass-bg);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1.5px solid var(--ink);
+      border-radius: 6px;
+      padding: clamp(3px, 0.6vh, 5px) clamp(8px, 1.2vw, 12px);
+      font-family: var(--font-mono);
+      font-size: clamp(0.62rem, 0.9vw, 0.72rem);
+      font-weight: 700;
+      color: var(--ink);
+      text-decoration: none;
+      box-shadow: 2px 2px 0 var(--shadow-ink);
+      transition: all 0.15s ease;
+    }
+
+    .nav-pill-link:hover {
+      transform: translate(1px, 1px);
+      box-shadow: 1px 1px 0 var(--shadow-ink);
+      background: #ffffff;
+      color: var(--purple);
+    }
+
+    /* Responsive Tightening */
+    @media (max-width: 640px) {
+      .nav-center-status {
+        display: none; /* hide middle status on narrow mobile screens to prevent crowding */
+      }
+      .page-footer {
+        flex-direction: column;
+        gap: 6px;
+        text-align: center;
+      }
+      .token-1, .token-2, .token-3 {
+        display: none;
+      }
+      .chips-cluster {
+        margin-bottom: 14px;
+      }
+    }
+
+    @media (max-height: 660px) {
+      .card-body {
+        padding: 12px 18px;
+      }
+      .card-top-strip {
+        padding: 5px 14px;
+      }
+      .stamp-pill {
+        margin-bottom: 6px;
+      }
+      .card-hero-title {
+        margin-bottom: 3px;
+      }
+      .card-hero-sub {
+        margin-bottom: 6px;
+      }
+      .card-desc-text {
+        margin-bottom: 10px;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+      .chips-cluster {
+        margin-bottom: 10px;
+      }
+      .main-redirect-btn {
+        min-height: 44px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Ambient Light Graphics & Tokens -->
+  <div class="ambient-canvas" aria-hidden="true">
+    <div class="bg-grid"></div>
+    <div class="glow-sphere glow-purple"></div>
+    <div class="glow-sphere glow-amber"></div>
+    <div class="glow-sphere glow-cyan"></div>
+    <div class="glass-token token-1"></div>
+    <div class="glass-token token-2"></div>
+    <div class="glass-token token-3"></div>
+  </div>
+
+  <!-- Main Viewport Box (Strictly Single Screen) -->
+  <div class="page-frame">
+
+    <!-- Unified Co-Branded Top Navbar -->
+    <header class="top-navbar">
+      <a href="https://aws-sbg-guni-website.onrender.com" class="nav-brand-side" title="AWS SBG Ganpat University">
+        <!-- Official Geometric SVG Mark -->
+        <svg class="nav-sbg-logo" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="AWS SBG Logo">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M 2 1 V 0 H 3 V 1 H 4 V 0 H 5 V 1 H 6 V 0 H 7 V 2 H 2 Z M 8 2 H 9 V 3 H 8 V 4 H 9 V 5 H 8 V 6 H 9 V 7 H 7 V 2 Z M 7 8 V 9 H 6 V 8 H 5 V 9 H 4 V 8 H 3 V 9 H 2 V 7 H 7 Z M 1 7 H 0 V 6 H 1 V 5 H 0 V 4 H 1 V 3 H 0 V 2 H 2 V 7 Z" fill="currentColor" />
+        </svg>
+        <div class="nav-title-group">
+          <span class="nav-main-title">AWS Student Builder Group</span>
+          <span class="nav-sub-title">Ganpat University</span>
+        </div>
+      </a>
+
+      <div class="nav-guni-side">
+        <div class="nav-divider" aria-hidden="true"></div>
+        <img src="assets/guni-logo.png" alt="Ganpat University Centre of Excellence" class="nav-guni-logo" />
+      </div>
+    </header>
+
+    <!-- Center Stage: Glassmorphic Neo-Brutalist Portal Card -->
+    <main class="center-stage">
+      <section class="brutal-card">
+
+        <!-- Card Top Window Strip -->
+        <div class="card-top-strip">
+          <div class="window-controls" aria-hidden="true">
+            <span class="w-dot w-dot-red"></span>
+            <span class="w-dot w-dot-yellow"></span>
+            <span class="w-dot w-dot-green"></span>
+          </div>
+        </div>
+
+        <!-- Card Body -->
+        <div class="card-body">
+          <div class="stamp-pill">
+            <span>⚡ OFFICIAL WEB GATEWAY</span>
+          </div>
+
+          <h1 class="card-hero-title">AWS Student Builder Group</h1>
+          <div class="card-hero-sub">Ganpat University</div>
+
+          <p class="card-desc-text">
+            A platform to learn, build, and innovate with the power of AWS Cloud. Connecting students with hands-on learning, innovation, and real-world opportunities.
+          </p>
+
+          <!-- Tactile Redirect CTA Button -->
+          <div class="cta-column">
+            <a href="https://aws-sbg-guni-website.onrender.com" class="main-redirect-btn" id="portalActionBtn">
+              <span>Explore Official Website</span>
+              <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="7" y1="17" x2="17" y2="7"></line>
+                <polyline points="7 7 17 7 17 17"></polyline>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+      </section>
+    </main>
+
+    <!-- Bottom Footer -->
+    <footer class="page-footer">
+      <span class="footer-copy">© 2026 AWS SBG · Ganpat University</span>
+
+      <nav class="footer-pill-row" aria-label="Community Links">
+        <a href="https://www.meetup.com/aws-sbg-at-ganpat-university/" target="_blank" rel="noopener noreferrer" class="nav-pill-link">
+          <span>Meetup</span>
+          <span aria-hidden="true">↗</span>
+        </a>
+        <a href="https://www.linkedin.com/company/aws-student-builder-group-guni/" target="_blank" rel="noopener noreferrer" class="nav-pill-link">
+          <span>LinkedIn</span>
+          <span aria-hidden="true">↗</span>
+        </a>
+        <a href="https://ganpatuniversity.ac.in" target="_blank" rel="noopener noreferrer" class="nav-pill-link">
+          <span>GUNI</span>
+          <span aria-hidden="true">↗</span>
+        </a>
+      </nav>
+    </footer>
+
+  </div>
+
+</body>
+</html>

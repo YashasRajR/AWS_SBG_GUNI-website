@@ -12,6 +12,7 @@ import { Navbar } from './components/layout/Navbar';
 import { Footer } from './components/layout/Footer';
 import { SonarClickEffect } from './components/ui/SonarClickEffect';
 import { BackToTop } from './components/ui/BackToTop';
+import { EventPopupModal } from './components/ui/EventPopupModal';
 
 // Pages
 import { Home } from './pages/Home';
@@ -21,6 +22,7 @@ import { Events } from './pages/Events';
 import { Gallery } from './pages/Gallery';
 import { Contact } from './pages/Contact';
 import { NotFound } from './pages/NotFound';
+import { EventPage } from './pages/EventPage';
 
 // Scroll Restoration helper
 const ScrollToTop: React.FC = () => {
@@ -38,6 +40,9 @@ const AppContent: React.FC = () => {
     <div className="flex flex-col min-h-screen relative text-slate-100 selection:bg-[#ff9900]/30 selection:text-[#ff9900] w-full max-w-[100vw] overflow-x-hidden">
       {/* Interactive global click sonar sweeping waves */}
       <SonarClickEffect />
+
+      {/* Pop-up Notification for AWS SBG Student Community Day */}
+      <EventPopupModal />
 
       {/* Sticky navigation header */}
       <Navbar />
@@ -123,6 +128,7 @@ export const App: React.FC = () => {
       >
         <Routes>
           <Route path="/" element={<AppContent />} />
+          <Route path="/events" element={<EventPage />} />
           <Route path="*" element={
             <div className="flex flex-col min-h-screen relative text-slate-100 selection:bg-[#ff9900]/30 selection:text-[#ff9900] w-full max-w-[100vw] overflow-x-hidden">
               <SonarClickEffect />

@@ -160,6 +160,31 @@ export const TEAM_MEMBERS: TeamMember[] = [
 
 export const EVENTS: EventItem[] = [
   {
+    id: 'event-scd-2026',
+    name: 'AWS SBG Student Community Day',
+    date: 'October 6, 2026',
+    venue: 'Ganpat University, Kherwa, Mehsana',
+    type: 'community',
+    status: 'upcoming',
+    poster: '/gallery/scd_poster.png',
+    description: 'Flagship AWS Students Community Day 2026 at Ganpat University! Connect with AWS Community Heroes, learn cutting-edge cloud technologies, grab exciting swags, and experience greatness. Seats are strictly limited!',
+    details: 'AWS SBG Student Community Day 2026 at Ganpat University brings together passionate students, cloud builders, and AWS Community Heroes for a full-day cloud immersion.\n\nWhat to expect:\n- Expert Speakers: Connect with AWS Community Heroes & cloud innovators\n- Experience Greatness: Learn, connect, grow, and enjoy interactive sessions\n- Exciting Goodies: Grab exclusive swags and gifts\n- Hands-on architectural insights & real-world best practices\n\nDate: 6th October 2026\nTime: 08:30 AM – 05:00 PM\nVenue: Ganpat University, Kherwa, Mehsana\nRegistration is live! Seats are strictly limited — register early to ensure your entry.',
+    speakers: [
+      {
+        name: 'AWS Community Heroes & Industry Leaders',
+        designation: 'Keynote & Technical Speakers'
+      }
+    ],
+    itinerary: [
+      { time: '08:30 AM - 09:30 AM', activity: 'Registrations & Welcome Breakfast' },
+      { time: '09:30 AM - 12:30 PM', activity: 'Keynotes & Deep-Dive Cloud Architecture Sessions' },
+      { time: '12:30 PM - 01:30 PM', activity: 'Networking Lunch & Swag Distribution' },
+      { time: '01:30 PM - 04:30 PM', activity: 'Hands-on Workshops & Community Panels' },
+      { time: '04:30 PM - 05:00 PM', activity: 'Closing Ceremony, Awards & Group Photo' }
+    ],
+    registrationUrl: 'https://scd-web-shmm.onrender.com/'
+  },
+  {
     id: 'event-upcoming-1',
     name: 'AWS Gujarat Students Builder Week 2026',
     date: 'July 5 - 11, 2026',
@@ -168,7 +193,7 @@ export const EVENTS: EventItem[] = [
     status: 'past',
     poster: '/gallery/gujarat_builder_week_poster.png',
     description: 'Get ready for AWS Gujarat Students Builder Week 2026 — a 7-day virtual learning experience organized by the AWS Student Builder Group Leaders – Gujarat.',
-    details: 'Get ready for AWS Gujarat Students Builder Week 2026 — a 7-day virtual learning experience organized by the AWS Student Builder Group Leaders – Gujarat.\n\nWhat to expect:\n- 10+ Industry Experts & Community Leaders\n- 7 Days of Continuous Learning\n- Live Interactive Q&A Sessions\n- E-Certificates for Special Achievers\n- Hands-on AWS & Cloud Learning\n\n️ Date: 5th – 11th July 2026\n Mode: Online\n⏰ Time: To be announced\n️ Registration is open on Meetup! Join us to learn, connect, and build with the AWS community.',
+    details: 'Get ready for AWS Gujarat Students Builder Week 2026 — a 7-day virtual learning experience organized by the AWS Student Builder Group Leaders – Gujarat.\n\nWhat to expect:\n- 10+ Industry Experts & Community Leaders\n- 7 Days of Continuous Learning\n- Live Interactive Q&A Sessions\n- E-Certificates for Special Achievers\n- Hands-on AWS & Cloud Learning\n\nDate: 5th – 11th July 2026\nMode: Online\nTime: To be announced\nRegistration is open on Meetup! Join us to learn, connect, and build with the AWS community.',
     speakers: [
       {
         name: 'Harshil Maniyar (Co-organizer)',
@@ -212,7 +237,7 @@ export const EVENTS: EventItem[] = [
     status: 'past',
     poster: '/gallery/Poster1.png',
     description: 'AWS Cloud Ignite was a flagship cloud computing awareness event organized by the AWS Cloud Club Ganpat University on 25th March 2026 at Seminar Hall 209, Ganpat University. The event was designed to introduce students to the fundamentals of cloud computing and the vast ecosystem of Amazon Web Services (AWS), while highlighting emerging industry trends and career opportunities in the cloud domain.',
-    details: 'The program witnessed an overwhelming response from students, receiving more than 600 registrations. Due to venue limitations, approximately 200 students attended the event, demonstrating the growing interest in cloud technologies among the student community.\n\nThe event featured renowned AWS community leaders and cloud experts, including Nilesh Vaghela, Dimple Vaghela, and Aric Pandya, who shared valuable insights into AWS services, cloud architecture, industry best practices, certifications, and career pathways. Through engaging discussions and real-world examples, the speakers successfully connected academic concepts with practical industry applications, enabling students to gain a deeper understanding of modern cloud technologies.\n\nThe presence of distinguished university dignitaries and faculty members further enriched the event and encouraged students to actively participate in technology-driven learning initiatives. Interactive discussions, question-and-answer sessions, and the fun-filled “Only Wrong Answers” activity created an energetic and collaborative learning environment that kept participants engaged throughout the program.\n\nOverall, AWS Cloud Ignite served as an impactful platform for students to explore cloud computing, interact with industry experts, and gain valuable knowledge about AWS technologies. The event successfully achieved its objective of fostering cloud awareness, enhancing technical understanding, and inspiring students to pursue future opportunities in cloud computing and related technologies.',
+    details: 'The program witnessed an overwhelming response from students, receiving more than 600 registrations. Due to venue limitations, approximately 200 students attended the event, demonstrating the growing interest in cloud technologies among the student community.\n\nThe event featured renowned AWS community leaders and cloud experts, including Nilesh Vaghela and Dimple Vaghela, who shared valuable insights into AWS services, cloud architecture, industry best practices, certifications, and career pathways. Through engaging discussions and real-world examples, the speakers successfully connected academic concepts with practical industry applications, enabling students to gain a deeper understanding of modern cloud technologies.\n\nThe presence of distinguished university dignitaries and faculty members further enriched the event and encouraged students to actively participate in technology-driven learning initiatives. Interactive discussions, question-and-answer sessions, and the fun-filled “Only Wrong Answers” activity created an energetic and collaborative learning environment that kept participants engaged throughout the program.\n\nOverall, AWS Cloud Ignite served as an impactful platform for students to explore cloud computing, interact with industry experts, and gain valuable knowledge about AWS technologies. The event successfully achieved its objective of fostering cloud awareness, enhancing technical understanding, and inspiring students to pursue future opportunities in cloud computing and related technologies.',
     speakers: [
       {
         name: 'Nilesh Vaghela',
@@ -223,17 +248,35 @@ export const EVENTS: EventItem[] = [
         name: 'Dimple Vaghela',
         designation: 'AWS Community Hero, AWS User Group Leader',
         linkedin: 'https://www.linkedin.com/in/dimple-vaghela-ba45447b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app'
-      },
-      {
-        name: 'Aric Pandya',
-        designation: 'AWS Community Builder (Security)',
-        linkedin: 'https://linkedin.com/in/aricpandya'
       }
     ],
     itinerary: [
       { time: '10:00 AM - 10:30 AM', activity: 'Keynote & Launch' },
       { time: '10:30 AM - 12:00 PM', activity: 'EC2 & S3 Console Hands-On' },
       { time: '12:00 PM - 01:00 PM', activity: 'Q&A & Career Guidance' }
+    ],
+    registrationUrl: 'https://www.meetup.com/aws-sbg-at-ganpat-university/'
+  },
+  {
+    id: 'event-cloudx-2026',
+    name: 'CloudX – AWS Certification Drive',
+    date: 'August 22, 2026',
+    venue: 'Seminar Hall 209, 2nd Floor, New Building, Ganpat University',
+    type: 'workshop',
+    status: 'past',
+    poster: '/gallery/cloudx_poster.jpg',
+    description: 'Interactive AWS certification drive organized by AWS Student Builder Group at Ganpat University with 210+ registrations, led by Associate Professor Mr. Himanshu Patel on cloud models, distributed systems, and AWS certification pathways.',
+    details: 'CloudX – AWS Certification Drive was organized by the AWS Student Builder Group at Ganpat University on 22nd August 2026 at Seminar Hall 209, New Building, Ganpat University. The interactive certification drive was designed to guide students on starting their cloud journey and taking their first steps toward AWS Certifications, focusing on the AWS Certified Cloud Practitioner pathway.\n\nThe drive witnessed enthusiastic participation with 210+ student registrations. Led by Associate Professor Mr. Himanshu Patel, the session provided students with clear insights into cloud deployment models, distributed cloud architectures, and structured preparation strategies for AWS certification exams.\n\nParticipants engaged in live discussions on cloud career roadmaps, AWS Academy learning resources, and exam readiness techniques. The event concluded with interactive Q&A sessions where attendees received guidance on hands-on labs and certification voucher opportunities.',
+    speakers: [
+      {
+        name: 'Mr. Himanshu Patel',
+        designation: 'Associate Professor, Ganpat University'
+      }
+    ],
+    itinerary: [
+      { time: '10:00 AM - 10:15 AM', activity: 'Welcome & Introduction to CloudX' },
+      { time: '10:15 AM - 10:45 AM', activity: 'AWS Certification Pathways & Cloud Architecture' },
+      { time: '10:45 AM - 11:00 AM', activity: 'Q&A, Exam Prep & Next Steps' }
     ],
     registrationUrl: 'https://www.meetup.com/aws-sbg-at-ganpat-university/'
   }

@@ -7,6 +7,7 @@ Edit the text/images below. Do not change the tags/classes.
 
 import React from 'react';
 import { TeamCard } from '../components/ui/TeamCard';
+import { FloatInText } from '../components/ui/FloatInText';
 
 interface TeamMember {
   id: string;
@@ -19,18 +20,8 @@ interface TeamMember {
   github?: string;
 }
 
-// Complete data list for all 21 members in the single sequence (Advisor + 20 sub-team members)
+// Complete data list for all 20 sub-team members
 const teamMembers: TeamMember[] = [
-  // Adviser
-  {
-    id: 'advisor-aric',
-    name: 'Aric Pandya',
-    role: 'Advisor',
-    tagline: 'Guiding student cloud builders through advanced architectural principles, cloud roadmaps, and career development initiatives.',
-    photo: '/gallery/Aric.png',
-    linkedin: 'https://linkedin.com/in/aricpandya',
-    team: 'Adviser'
-  },
   // Developer Team
   {
     id: 'dev-yashas',
@@ -224,10 +215,19 @@ export const Team: React.FC = () => {
   const coordinator = {
     name: "Dr. Kiran Amin",
     designation: "Deputy Pro Vice Chancellor & Executive Dean FoET Principal (GUNI - UVPCE)",
-    role: "Senior Mentor",
+    role: "Senior Advisor",
     tagline: "Academic Leadership & Excellence",
     profileImage: "/gallery/KiranAmin.png",
     linkedin: "#"
+  };
+
+  const mentor = {
+    name: "Dr. Ketan Patel",
+    designation: "Associate Professor, Faculty of Computer Applications (GUNI)",
+    role: "Mentor",
+    tagline: "Associate Professor, Faculty of Computer Applications (GUNI)",
+    profileImage: "/gallery/KetanPatel.png",
+    linkedin: "https://www.linkedin.com/in/ketan-patel-00662a9a/"
   };
 
   const coordinator2 = {
@@ -262,7 +262,7 @@ export const Team: React.FC = () => {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-32 relative z-10">
         <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold font-poppins uppercase text-left w-full block whitespace-pre-wrap break-words">
           <span className="bg-gradient-to-b from-[#190a2b] to-[#d6aeff] bg-clip-text text-transparent inline-block pb-1">
-            Our Team
+            <FloatInText text="OUR TEAM" />
           </span>
         </h1>
       </section>
@@ -279,6 +279,17 @@ export const Team: React.FC = () => {
               description: coordinator.tagline,
               profileImage: coordinator.profileImage,
               linkedin: coordinator.linkedin
+            }}
+          />
+          <TeamCard
+            member={{
+              name: mentor.name,
+              designation: mentor.designation,
+              role: mentor.role,
+              tagline: mentor.tagline,
+              description: mentor.tagline,
+              profileImage: mentor.profileImage,
+              linkedin: mentor.linkedin
             }}
           />
           <TeamCard
@@ -303,23 +314,6 @@ export const Team: React.FC = () => {
               linkedin: leader.linkedin
             }}
           />
-          {(() => {
-            const adviser = teamMembers.find(m => m.name === 'Aric Pandya');
-            if (!adviser) return null;
-            return (
-              <TeamCard
-                member={{
-                  name: adviser.name,
-                  designation: adviser.team,
-                  role: adviser.role,
-                  tagline: adviser.tagline,
-                  description: adviser.tagline,
-                  profileImage: adviser.photo,
-                  linkedin: adviser.linkedin
-                }}
-              />
-            );
-          })()}
         </div>
       </section>
 
@@ -336,7 +330,7 @@ export const Team: React.FC = () => {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 md:gap-10">
-          {teamMembers.filter(m => m.name !== 'Aric Pandya').map((member) => (
+          {teamMembers.map((member) => (
             <TeamCard
               key={member.id}
               member={{

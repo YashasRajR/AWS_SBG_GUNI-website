@@ -64,10 +64,11 @@ export const EventDetail: React.FC<EventDetailProps> = ({ event }) => {
       {/* Back to Events Nav */}
       <div className="mb-8">
         <Link 
-          to="/" 
-          className="inline-flex items-center gap-2 text-sm text-slate-400 hover:text-[#a855f7] transition-colors uppercase tracking-wider font-semibold"
+          to="/#events" 
+          className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-black/40 border border-[#a855f7]/40 text-[#c084fc] shadow-[0_0_15px_rgba(168,85,247,0.5)] hover:shadow-[0_0_25px_rgba(192,132,252,0.8)] hover:bg-[#a855f7]/10 hover:border-[#c084fc] hover:-translate-x-1 transition-all backdrop-blur-md"
+          title="Back to events list"
         >
-          <ArrowLeft className="w-4 h-4" /> Back to list
+          <ArrowLeft className="w-5 h-5" />
         </Link>
       </div>
 
@@ -225,20 +226,22 @@ export const EventDetail: React.FC<EventDetailProps> = ({ event }) => {
                   
                   <div className="space-y-2">
                     <h3 className="text-xl font-bold text-white font-heading">
-                      Join Event
+                      {event.status === 'upcoming' ? 'Register Now' : 'Join Event'}
                     </h3>
                     <p className="text-xs text-slate-400 font-sans leading-relaxed">
-                      This event is hosted on Meetup. Click below to RSVP and secure your spot in our community builder week.
+                      {event.registrationUrl.includes('meetup.com') 
+                        ? 'This event is hosted on Meetup. Click below to RSVP and secure your spot in our community builder week.'
+                        : 'Registration is live! Seats are strictly limited. Click below to visit the official registration website and reserve your seat.'}
                     </p>
                   </div>
 
                   <a
                     href={event.registrationUrl}
-                    
-                    
-                    className="w-full px-8 min-h-[48px] flex items-center justify-center rounded-full font-bold uppercase tracking-wider text-sm text-white bg-white/5 border border-white/10 hover:border-[#a855f7] hover:text-[#a855f7] hover:bg-white/10 transition-all gap-2 active:scale-95"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full px-8 min-h-[48px] flex items-center justify-center rounded-full font-bold uppercase tracking-wider text-sm text-white bg-[#a855f7] hover:bg-purple-600 shadow-lg shadow-[#a855f7]/30 hover:shadow-[#a855f7]/50 transition-all gap-2 active:scale-95 cursor-pointer"
                   >
-                    RSVP on Meetup
+                    {event.registrationUrl.includes('meetup.com') ? 'RSVP on Meetup' : 'Register on Official Website'}
                   </a>
                 </motion.div>
               ) : !formSubmitted ? (

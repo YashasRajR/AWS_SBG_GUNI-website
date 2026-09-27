@@ -18,6 +18,10 @@ const FAQS = [
   {
     question: "How can I become a core team member?",
     answer: "We typically open applications for core team positions at the start of the academic year. Keep an eye on our social media and Meetup page for recruitment announcements!"
+  },
+  {
+    question: "Where should I send my queries or proposals?",
+    answer: "You can submit your query directly through the Sender Details form on this page or write to us at aws.sbg@ganpatuniversity.ac.in. Our team reviews and responds to all inquiries."
   }
 ];
 

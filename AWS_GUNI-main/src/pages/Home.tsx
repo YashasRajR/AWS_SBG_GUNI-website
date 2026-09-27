@@ -146,36 +146,34 @@ export const Home: React.FC = () => {
             className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4 w-full px-2 sm:px-0"
           >
             <a
-              href="https://www.meetup.com/aws-sbg-at-ganpat-university/"
-              
-              
-              className="w-full sm:w-auto px-8 min-h-[48px] flex items-center justify-center rounded-full font-bold uppercase tracking-wider text-sm text-white bg-white/5 border border-white/10 hover:border-[#a855f7] hover:text-[#a855f7] hover:bg-white/10 transition-all text-center gap-2 active:scale-95"
+              href="https://www.meetup.com/aws-sbg-at-ganpat-university/members/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full sm:w-auto px-10 py-3 min-h-[52px] flex items-center justify-center rounded-full font-extrabold uppercase tracking-widest text-sm text-white bg-[#a855f7] hover:bg-purple-600 shadow-lg shadow-[#a855f7]/25 hover:shadow-[#a855f7]/45 transition-all duration-300 transform hover:-translate-y-0.5 text-center gap-2 active:scale-95"
             >
-              Join Community
+              JOIN COMMUNITY
             </a>
             <a
               href="#events"
-              className="w-full sm:w-auto px-8 min-h-[48px] flex items-center justify-center rounded-full font-bold uppercase tracking-wider text-sm text-white bg-white/5 border border-white/10 hover:border-[#a855f7] hover:text-[#a855f7] hover:bg-white/10 transition-all text-center gap-2 active:scale-95"
+              className="w-full sm:w-auto px-10 py-3 min-h-[52px] flex items-center justify-center rounded-full font-extrabold uppercase tracking-widest text-sm text-white bg-[#0a0a0a]/80 backdrop-blur-md border border-white/15 hover:border-[#c084fc] hover:shadow-[0_0_20px_rgba(192,132,252,0.4)] hover:bg-white/5 transition-all text-center gap-2 active:scale-95 shadow-2xl"
             >
-              Explore Events
+              EVENT CALENDAR
               <ArrowRight className="w-4 h-4 text-[#a855f7]" />
             </a>
           </motion.div>
         </div>
       </section>
 
-      {/* 2. ABOUT SUMMARY */}
-      <section className="py-14 sm:py-24 relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 z-10 mt-8">
-        <div className="absolute inset-0 bg-gradient-to-r from-[#a855f7]/20 via-transparent to-[#d6aeff]/20 rounded-[3rem] blur-3xl opacity-60 pointer-events-none" />
-        
+      {/* WHAT ARE WE SECTION (Glassy Float) */}
+      <section className="py-24 sm:py-32 relative bg-transparent pointer-events-auto">
         <motion.div 
-          initial={{ opacity: 0, y: 50, scale: 0.95 }}
-          whileInView={{ opacity: 1, y: 0, scale: 1 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="relative p-6 sm:p-16 overflow-hidden group transition-colors transition-shadow duration-700"
+          className="relative max-w-4xl mx-auto rounded-3xl p-8 sm:p-12 glass border border-white/5 overflow-hidden group hover:shadow-[0_0_40px_rgba(168,85,247,0.35)] hover:border-[#a855f7]/40 transition-all duration-500"
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.8 }}
         >
-          {/* Animated corner gradients */}
+          {/* Animated Background Blobs */}
           <div className="absolute -top-24 -left-24 w-48 h-48 bg-[#a855f7] rounded-full mix-blend-screen filter blur-[80px] opacity-50 group-hover:opacity-80 transition-opacity duration-700 pointer-events-none" />
           <div className="absolute -bottom-24 -right-24 w-48 h-48 bg-[#00f5ff] rounded-full mix-blend-screen filter blur-[80px] opacity-50 group-hover:opacity-80 transition-opacity duration-700 pointer-events-none" />
           
@@ -190,11 +188,39 @@ export const Home: React.FC = () => {
               <div className="h-px bg-gradient-to-l from-transparent to-[#d6aeff]/50 w-16" />
             </div>
 
-            <p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-              The AWS Student Builders Group at Ganpat University is a community of <strong className="text-white">passionate builders</strong>, 
-              learning and experimenting with <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#a855f7] to-[#d6aeff] font-semibold">cloud technologies</span>. 
-              Our mission is to empower students with the skills, hands-on experience, and network needed to thrive in a <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#d6aeff] to-[#a855f7] font-semibold">cloud-first world</span>.
-            </p>
+            <motion.p 
+              className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed flex flex-wrap justify-center text-center inline-block"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: false, amount: 0.3 }}
+              variants={{
+                hidden: {},
+                visible: {
+                  transition: { staggerChildren: 0.2, delayChildren: 0.2 }
+                }
+              }}
+            >
+              {[
+                <span key="1">The AWS Student Builders Group at Ganpat University is a community of&nbsp;</span>,
+                <strong key="2" className="text-white">passionate builders</strong>,
+                <span key="3">, learning and experimenting with&nbsp;</span>,
+                <span key="4" className="text-transparent bg-clip-text bg-gradient-to-r from-[#a855f7] to-[#d6aeff] font-semibold">cloud technologies</span>,
+                <span key="5">.&nbsp;Our mission is to empower students with the skills, hands-on experience, and network needed to thrive in a&nbsp;</span>,
+                <span key="6" className="text-transparent bg-clip-text bg-gradient-to-r from-[#d6aeff] to-[#a855f7] font-semibold">cloud-first world</span>,
+                <span key="7">.</span>
+              ].map((child, idx) => (
+                <motion.span
+                  key={idx}
+                  variants={{
+                    hidden: { opacity: 0, y: 15, filter: 'blur(5px)' },
+                    visible: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.6, ease: "easeOut" } }
+                  }}
+                  className="inline-block"
+                >
+                  {child}
+                </motion.span>
+              ))}
+            </motion.p>
           </div>
         </motion.div>
       </section>

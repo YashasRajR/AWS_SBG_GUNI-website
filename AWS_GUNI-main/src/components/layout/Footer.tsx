@@ -1,6 +1,6 @@
 import React from 'react';
-import { Mail, MapPin, Phone, Globe } from 'lucide-react';
-import { LinkedinIcon, GithubIcon, TwitterIcon, MeetupIcon } from '../ui/SocialIcons';
+import { Mail, MapPin, Phone } from 'lucide-react';
+import { LinkedinIcon, MeetupIcon, InstagramIcon } from '../ui/SocialIcons';
 import { Logo } from '../ui/Logo';
 
 
@@ -38,48 +38,30 @@ export const Footer: React.FC = () => {
             <div className="flex flex-wrap items-center gap-5 pt-4">
               <a
                 href="https://www.linkedin.com/company/aws-student-builder-group-guni/"
-                
-                
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-12 h-12 rounded-full border border-white/10 hover:border-[#a855f7] hover:text-[#a855f7] flex items-center justify-center bg-white/5 transition-all hover:scale-105 active:scale-95"
                 aria-label="LinkedIn Profile"
               >
                 <LinkedinIcon className="w-5 h-5" />
               </a>
               <a
-                href="https://github.com"
-                
-                
-                className="w-12 h-12 rounded-full border border-white/10 hover:border-[#d946ef] hover:text-[#d946ef] flex items-center justify-center bg-white/5 transition-all hover:scale-105 active:scale-95"
-                aria-label="GitHub Repository"
-              >
-                <GithubIcon className="w-5 h-5" />
-              </a>
-              <a
-                href="https://twitter.com"
-                
-                
-                className="w-12 h-12 rounded-full border border-white/10 hover:border-[#a855f7] hover:text-[#a855f7] flex items-center justify-center bg-white/5 transition-all hover:scale-105 active:scale-95"
-                aria-label="Twitter Profile"
-              >
-                <TwitterIcon className="w-5 h-5" />
-              </a>
-              <a
-                href="https://ganpatuniversity.ac.in"
-                
-                
-                className="w-12 h-12 rounded-full border border-white/10 hover:border-[#d946ef] hover:text-[#d946ef] flex items-center justify-center bg-white/5 transition-all hover:scale-105 active:scale-95"
-                aria-label="University Website"
-              >
-                <Globe className="w-5 h-5" />
-              </a>
-              <a
                 href="https://www.meetup.com/aws-sbg-at-ganpat-university/"
-                
-                
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-12 h-12 rounded-full border border-white/10 hover:border-[#a855f7] hover:text-[#a855f7] flex items-center justify-center bg-white/5 transition-all hover:scale-105 active:scale-95"
                 aria-label="Meetup Community Group"
               >
                 <MeetupIcon className="w-5 h-5" />
+              </a>
+              <a
+                href="https://instagram.com/aws.sbg_guni"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-12 h-12 rounded-full border border-white/10 hover:border-[#a855f7] hover:text-[#a855f7] flex items-center justify-center bg-white/5 transition-all hover:scale-105 active:scale-95"
+                aria-label="Instagram Profile"
+              >
+                <InstagramIcon className="w-5 h-5" />
               </a>
             </div>
           </div>
@@ -166,10 +148,6 @@ export const Footer: React.FC = () => {
             <a href="#" className="hover:text-white transition-colors whitespace-nowrap">
               Terms of Use
             </a>
-            <span className="text-slate-600 hidden sm:inline">|</span>
-            <span className="text-slate-500 w-full sm:w-auto text-center mt-1 sm:mt-0">
-              Designed in Partnership with AWS Academy
-            </span>
           </div>
         </div>
       </div>

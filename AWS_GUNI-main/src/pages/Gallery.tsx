@@ -11,6 +11,7 @@ import { motion } from 'framer-motion';
 import { GALLERY_ITEMS } from '../data/mockData';
 import type { GalleryItem } from '../data/mockData';
 import { Lightbox } from '../components/ui/Lightbox';
+import { FloatInText } from '../components/ui/FloatInText';
 
 const handleDownload = async (imageUrl: string, title: string) => {
   try {
@@ -131,13 +132,13 @@ export const Gallery: React.FC = () => {
   };
 
   return (
-    <div className="relative min-h-screen w-full overflow-hidden bg-black py-24 select-none">
+    <div className="relative min-h-screen w-full overflow-hidden bg-black py-12 select-none">
       {/* Background glows */}
       <div className="absolute top-1/4 left-1/10 w-96 h-96 bg-[#a855f7]/5 rounded-full blur-[140px] pointer-events-none" />
       <div className="absolute bottom-1/4 right-1/10 w-96 h-96 bg-[#d946ef]/5 rounded-full blur-[140px] pointer-events-none" />
 
       {/* Central heading */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 sm:mb-24 mt-32 relative z-10">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 sm:mb-24 mt-12 relative z-10">
         <motion.h1
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
@@ -145,7 +146,7 @@ export const Gallery: React.FC = () => {
           className="text-4xl sm:text-5xl lg:text-6xl font-bold font-poppins uppercase text-left w-full block whitespace-pre-wrap break-words"
         >
           <span className="bg-gradient-to-b from-[#190a2b] to-[#d6aeff] bg-clip-text text-transparent inline-block pb-1">
-            CAPTURING THE JOURNEY
+            <FloatInText text="CAPTURING THE JOURNEY" />
           </span>
         </motion.h1>
       </section>

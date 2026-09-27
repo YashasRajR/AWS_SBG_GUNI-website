@@ -1,6 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { BookOpen, Terminal, Users, Award } from 'lucide-react';
+import { FloatInText } from './FloatInText';
+import { MagicBentoGrid, MagicBentoCard } from './MagicBentoCard';
 
 export const CircuitBentoGrid: React.FC = () => {
   const cardData = [
@@ -8,30 +10,30 @@ export const CircuitBentoGrid: React.FC = () => {
       id: 1,
       title: "Learn AWS Cloud Fundamentals",
       desc: "Master AWS cloud concepts through structured learning paths.",
-      icon: <BookOpen className="w-6 h-6 text-white" />,
+      icon: <BookOpen className="w-6 h-6" />,
     },
     {
       id: 2,
       title: "Gain Hands-On Experience",
       desc: "Build real-world cloud projects in secure AWS environments.",
-      icon: <Terminal className="w-6 h-6 text-white" />,
+      icon: <Terminal className="w-6 h-6" />,
     },
     {
       id: 3,
       title: "Connect with Expert Speakers",
       desc: "Learn directly from AWS experts through talks and workshops.",
-      icon: <Users className="w-6 h-6 text-white" />,
+      icon: <Users className="w-6 h-6" />,
     },
     {
       id: 4,
       title: "Get Certified & Validated",
       desc: "Prepare for AWS Certifications with guided study and support.",
-      icon: <Award className="w-6 h-6 text-white" />,
+      icon: <Award className="w-6 h-6" />,
     }
   ];
 
   return (
-    <div className="relative w-full bg-transparent py-24 select-none">
+    <div className="relative w-full bg-transparent py-8 sm:py-12 select-none">
       {/* Background Grid */}
       <div 
         className="absolute inset-0 z-0 opacity-[0.06] bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px]" 
@@ -44,17 +46,17 @@ export const CircuitBentoGrid: React.FC = () => {
 
       <div className="max-w-6xl mx-auto px-4 relative z-10 w-full">
         {/* Title */}
-        <div className="flex flex-col items-start justify-center px-4 mb-16 text-left">
+        <div className="flex flex-col items-start justify-center px-4 mb-10 text-left">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold font-poppins uppercase tracking-tight relative">
             <span className="bg-gradient-to-b from-[#190a2b] to-[#d6aeff] bg-clip-text text-transparent inline-block pb-1">
-              WHY JOIN AWS SBG GUNI
+              <FloatInText text="WHY JOIN AWS SBG GUNI" />
             </span>
             <div className="absolute -inset-8 bg-purple-500/10 rounded-full blur-3xl pointer-events-none -z-10" />
           </h2>
         </div>
 
         {/* 2x2 Grid on desktop, 1 column on mobile */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <MagicBentoGrid className="grid grid-cols-1 md:grid-cols-2 gap-6 px-4">
           {cardData.map((card, index) => (
             <motion.div 
               key={card.id}
@@ -62,23 +64,24 @@ export const CircuitBentoGrid: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.5, delay: index * 0.2, ease: "easeOut" }}
-              className="glass rounded-2xl p-8 flex flex-col justify-start border border-[#a855f7]/25 bg-black/40 backdrop-blur-md transition-all duration-300 hover:border-[#d946ef] hover:shadow-[0_0_15px_rgba(217,70,239,0.2)] hover:bg-black/60"
             >
-              {/* Neon Icon Frame */}
-              <div className="w-12 h-12 rounded-xl bg-[#a855f7]/15 flex items-center justify-center mb-6 border border-[#a855f7]/45 shrink-0">
-                {card.icon}
-              </div>
+              <MagicBentoCard className="p-8 rounded-2xl border border-white/5 bg-[#050505]/60 backdrop-blur-md shadow-xl flex flex-col justify-start transition-all duration-300 hover:border-white/10 hover:bg-[#0a0a0a]/80 h-full">
+                {/* Neon Icon Frame */}
+                <div className="w-12 h-12 rounded-xl bg-[#a855f7]/10 border border-[#a855f7]/20 flex items-center justify-center mb-6 text-[#c084fc] shrink-0">
+                  {card.icon}
+                </div>
 
-              {/* Typography details */}
-              <h3 className="text-2xl font-bold text-white font-heading mb-3 tracking-tight">
-                {card.title}
-              </h3>
-              <p className="text-base text-gray-300 font-sans leading-relaxed">
-                {card.desc}
-              </p>
+                {/* Typography details */}
+                <h3 className="text-xl font-bold text-white font-heading mb-3 tracking-tight">
+                  {card.title}
+                </h3>
+                <p className="text-sm text-slate-400 font-sans leading-relaxed">
+                  {card.desc}
+                </p>
+              </MagicBentoCard>
             </motion.div>
           ))}
-        </div>
+        </MagicBentoGrid>
       </div>
     </div>
   );

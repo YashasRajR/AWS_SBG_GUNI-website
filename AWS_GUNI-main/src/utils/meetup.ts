@@ -20,7 +20,7 @@ export interface MeetupData {
 
 // Latest live numbers as of June 2026 used as static fallback
 export const STATIC_FALLBACK: MeetupData = {
-  memberCount: 1017,
+  memberCount: 1449,
   upcomingEvents: [
     {
       id: '315424216',

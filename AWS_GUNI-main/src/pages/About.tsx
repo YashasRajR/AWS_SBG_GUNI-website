@@ -14,6 +14,7 @@ import {
 import { MagicBentoCard } from '../components/ui/MagicBentoCard';
 import { ScrollText } from '../components/ui/ScrollReveal';
 import CircuitBentoGrid from '../components/ui/CircuitBentoGrid';
+import { FloatInText } from '../components/ui/FloatInText';
 
 export const About: React.FC = () => {
   return (
@@ -31,7 +32,7 @@ export const About: React.FC = () => {
           className="text-4xl sm:text-5xl lg:text-6xl font-bold font-poppins uppercase text-left w-full block whitespace-pre-wrap break-words"
         >
           <span className="bg-gradient-to-b from-[#190a2b] to-[#d6aeff] bg-clip-text text-transparent inline-block pb-1">
-            About Us
+            <FloatInText text="ABOUT US" />
           </span>
         </motion.h1>
         
@@ -50,8 +51,8 @@ export const About: React.FC = () => {
       </section>
 
       {/* Mission, Vision, and Objectives Cards */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12 sm:mb-24">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8 sm:mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Mission */}
           <motion.div 
             initial={{ opacity: 0, y: 40 }}
@@ -59,9 +60,9 @@ export const About: React.FC = () => {
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.5, delay: 0.0, ease: "easeOut" }}
           >
-            <MagicBentoCard className="glass p-8 rounded-2xl border border-white/5 flex flex-col justify-between shadow-xl h-full">
+            <MagicBentoCard className="p-8 rounded-2xl border border-white/5 flex flex-col justify-start bg-[#050505]/60 backdrop-blur-md shadow-xl h-full transition-all hover:border-white/10 hover:bg-[#0a0a0a]/80">
               <div className="space-y-4">
-                <div className="w-12 h-12 rounded-xl bg-[#ffaa00]/10 flex items-center justify-center text-[#ffaa00]">
+                <div className="w-12 h-12 rounded-xl bg-[#a855f7]/10 border border-[#a855f7]/20 flex items-center justify-center text-[#c084fc]">
                   <Compass className="w-6 h-6" />
                 </div>
                 <h3 className="text-xl font-bold text-white font-heading">Our Mission</h3>
@@ -79,9 +80,9 @@ export const About: React.FC = () => {
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
           >
-            <MagicBentoCard className="glass p-8 rounded-2xl border border-white/5 flex flex-col justify-between shadow-xl h-full">
+            <MagicBentoCard className="p-8 rounded-2xl border border-white/5 flex flex-col justify-start bg-[#050505]/60 backdrop-blur-md shadow-xl h-full transition-all hover:border-white/10 hover:bg-[#0a0a0a]/80">
               <div className="space-y-4">
-                <div className="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center text-cyan-400">
+                <div className="w-12 h-12 rounded-xl bg-[#a855f7]/10 border border-[#a855f7]/20 flex items-center justify-center text-[#c084fc]">
                   <Eye className="w-6 h-6" />
                 </div>
                 <h3 className="text-xl font-bold text-white font-heading">Our Vision</h3>
@@ -99,23 +100,23 @@ export const About: React.FC = () => {
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.5, delay: 0.4, ease: "easeOut" }}
           >
-            <MagicBentoCard className="glass p-8 rounded-2xl border border-white/5 flex flex-col justify-between shadow-xl h-full">
+            <MagicBentoCard className="p-8 rounded-2xl border border-white/5 flex flex-col justify-start bg-[#050505]/60 backdrop-blur-md shadow-xl h-full transition-all hover:border-white/10 hover:bg-[#0a0a0a]/80">
               <div className="space-y-4">
-                <div className="w-12 h-12 rounded-xl bg-[#00f5ff]/10 flex items-center justify-center text-[#00f5ff]">
+                <div className="w-12 h-12 rounded-xl bg-[#a855f7]/10 border border-[#a855f7]/20 flex items-center justify-center text-[#c084fc]">
                   <Target className="w-6 h-6" />
                 </div>
                 <h3 className="text-xl font-bold text-white font-heading">Key Objectives</h3>
-                <ul className="text-sm text-slate-400 space-y-2 font-sans">
-                  <li className="flex items-start gap-2">
-                    <CheckCircle className="w-4 h-4 text-[#00f5ff] shrink-0 mt-0.5" />
+                <ul className="text-sm text-slate-400 space-y-3 font-sans mt-2">
+                  <li className="flex items-start gap-3">
+                    <CheckCircle className="w-4 h-4 text-[#c084fc] shrink-0 mt-0.5" />
                     <span>Learn the fundamentals and advanced architectures of the AWS ecosystem.</span>
                   </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle className="w-4 h-4 text-[#00f5ff] shrink-0 mt-0.5" />
+                  <li className="flex items-start gap-3">
+                    <CheckCircle className="w-4 h-4 text-[#c084fc] shrink-0 mt-0.5" />
                     <span>Connect with cloud professionals to unlock career guidance and networks.</span>
                   </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle className="w-4 h-4 text-[#00f5ff] shrink-0 mt-0.5" />
+                  <li className="flex items-start gap-3">
+                    <CheckCircle className="w-4 h-4 text-[#c084fc] shrink-0 mt-0.5" />
                     <span>Gain verifiable skills through cloud deployments and industry certifications.</span>
                   </li>
                 </ul>

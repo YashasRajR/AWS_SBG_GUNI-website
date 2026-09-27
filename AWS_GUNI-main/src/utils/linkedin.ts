@@ -8,7 +8,7 @@ export interface LinkedinData {
 
 // Fallback exact follower count of the LinkedIn page as of July 2026
 export const STATIC_FALLBACK: LinkedinData = {
-  followerCount: 551,
+  followerCount: 580,
   isLive: true,
   isLoading: false
 };

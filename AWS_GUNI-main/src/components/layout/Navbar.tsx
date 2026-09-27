@@ -96,7 +96,7 @@ export const Navbar: React.FC = () => {
               <div className="flex flex-col border-r border-white/20 pr-3 sm:pr-4 shrink-0">
                 <span className="text-white font-bold text-sm md:text-base font-heading tracking-wide group-hover:text-[#a855f7] transition-colors duration-300">
                   <span className="hidden sm:inline">AWS Student Builder Group</span>
-                  <span className="sm:hidden text-lg">AWS SBG</span>
+                  <span className="sm:hidden text-base sm:text-lg">AWS SBG GUNI</span>
                 </span>
                 <span className="hidden sm:block text-[10px] text-purple-400 font-mono tracking-widest uppercase">
                   Ganpat University
